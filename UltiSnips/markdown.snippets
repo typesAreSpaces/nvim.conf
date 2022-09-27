@@ -1,0 +1,757 @@
+# teneral 
+
+snippet ;text "Text" iA
+\\text{ $1 } $0
+endsnippet
+
+snippet ;cite "Cite (optional: current item on + register)" iA
+\\cite{${1:`!v @+`}} $0
+endsnippet
+
+snippet ;label "Label" iA
+\\label{${1:`!v @+`}} $0
+endsnippet
+
+snippet ;ref "Reference" iA
+\\ref{${1:`!v @+`}} $0
+endsnippet
+
+snippet ;todo "TODO label" iA
+{{\color{red}[TODO]} \footnote{{\color{red}TODO:} $1}.} $0
+endsnippet
+
+snippet ;keep "KEEP label" iA
+{{\color{green}[KEEP]} \footnote{{\color{green}KEEP:} Working Here.}.} $0
+endsnippet
+
+snippet ;question "QUESTION label" iA
+{{\color{blue}[QUESTION]} \footnote{{\color{blue}QUESTION:} $1}.} $0
+endsnippet
+
+snippet ;bold "Bold text" iA
+\\textbf{$1}$0
+endsnippet 
+
+snippet ;itali "Italicized text" iA
+\\emph{$1}$0
+endsnippet 
+
+snippet ;' "Quoted text" iA
+\`\`$1''$0
+endsnippet
+
+snippet ;-- "Hybrid math-text" iA
+\$$1\$-$2 $0
+endsnippet
+
+snippet ;fnote "Footnote" iA
+\\footnote{$1} $0
+endsnippet
+
+# Accent-related
+
+snippet ;gr "Grave accent" iA
+\\\`{$1}$0
+endsnippet
+
+snippet ;ac "Acute accent" iA
+\\'{$1}$0
+endsnippet
+
+snippet ;um "Umlaut accent" iA
+\\"{$1}$0
+endsnippet
+
+# Algorithmic environment
+
+snippet ;algo "Algorithmic environment" iA
+\\begin{algorithm}[${1:H}]
+	\\caption{${2:title}}
+	\\label{${3:label}}
+	\\begin{algorithmic}[1]
+		\\Procedure{${4:name-of-procedure}}{${5:input}}
+		${6:\\Require conditions}
+		${7:\\Ensure conditions}
+		$0
+		\\EndProcedure
+	\\end{algorithmic}
+\\end{algorithm}
+endsnippet
+
+snippet ;state "Algorithmic Statement" iA
+\\State $1
+$0
+endsnippet
+
+snippet ;ife "Algorithm If" iA
+\\If {$1}
+	$2
+${3:\\Else
+	$4}
+\\EndIf
+$0
+endsnippet
+
+snippet ;for "Algorithm For" iA
+\\For {$1}
+	$2
+\\EndFor
+$0
+endsnippet
+
+snippet ;while "Algorithm While" iA
+\\While {$1}
+	$2
+\\EndWhile
+$0
+endsnippet
+
+# Beamer environment
+
+snippet ;frame "New frame" iA
+\\begin{frame}${1:[fragile]}{$2}
+	$0
+\\end{frame}
+endsnippet 
+
+# Math-related
+
+priority 100
+snippet ;.. "ldots" iA
+\\dots$0
+endsnippet
+
+snippet ;emptys "Empty Set" iA
+\\emptyset$0
+endsnippet
+
+snippet ;set "Set" iA
+\\set{$1 ${2:\mid $3}}$0
+endsnippet
+
+snippet ;_ "Subindex" iA
+_{$1}$0
+endsnippet
+
+snippet ;iff "If and only if" iA
+if and only if$0
+endsnippet
+
+snippet ;abs "Absolute value" iA
+|$1|$0
+endsnippet
+
+snippet ;comb "Combination (n choose k)" iA
+{$1 \\choose $2}$0
+endsnippet
+
+snippet ;eps "Epsilon" iA
+\\epsilon$0
+endsnippet
+
+snippet ;inv "Inverse" iA
+^{-1}$0
+endsnippet
+
+snippet ;pow "Power" iA
+^{$1}$0
+endsnippet
+
+priority 100
+snippet ;! "Disequality" iA
+\\neq$0
+endsnippet
+
+priority 100
+snippet ;<= "Less than or Equal to" iA
+\\leq $0
+endsnippet
+
+priority 100
+snippet ;>= "Greather than or Equal to" iA
+\\geq $0
+endsnippet
+
+snippet ;oo "Infinity" iA
+\\infty$0
+endsnippet
+
+snippet ;sos "Sums of squares" iA
+\\sum{$1}^2$0
+endsnippet
+
+snippet ;( "Parenthesis" iA
+\\left($1\\right)$0
+endsnippet
+
+snippet ;[ "Squared Parenthesis" iA
+\\left[$1\\right]$0
+endsnippet
+
+snippet ;<< "Angled Parenthesis" iA
+\\left<$1\\right>$0
+endsnippet
+
+snippet ;{ "Braces" iA
+{$1}$0
+endsnippet
+
+snippet ;wrt "with respect to" iA
+with respect to $0
+endsnippet
+
+snippet ;wlog "without loss of generality" iA
+without loss of generality $0
+endsnippet
+
+snippet ;subse "Subseteq" iA
+\\subseteq $0
+endsnippet
+
+snippet ;subss "Subseteq" iA
+\\subset $0
+endsnippet
+
+snippet ;supse "Supseteq" iA
+\\supseteq $0
+endsnippet
+
+snippet ;supss "Supseteq" iA
+\\supset $0
+endsnippet
+
+snippet ;NN "Natural Numbers" iA
+\\mathbb{N}$0
+endsnippet
+
+snippet ;ZZ "Integer Numbers" iA
+\\mathbb{Z}$0
+endsnippet
+
+snippet ;QQ "Rational Numbers" iA
+\\mathbb{Q}$0
+endsnippet
+
+snippet ;RR "Real Numbers" iA
+\\mathbb{R}$0
+endsnippet
+
+snippet ;CC "Complex Numbers" iA
+\\mathbb{C}$0
+endsnippet
+
+snippet ;sum "Sum" iA
+\\sum_{$1}^{$2}{$3}$0
+endsnippet
+
+snippet ;prod "Product" iA
+\\prod_{$1}^{$2}{$3}$0
+endsnippet
+
+snippet ;lim "Limit" iA
+\\lim_{$1 \to $2} $3 $0
+endsnippet
+
+snippet ;inte "Integral" iA
+\\int_{$1}^{$2} $3 \\, d${4:x}$0
+endsnippet
+
+snippet ;bigland "Big Conjunction" iA
+\\bigwedge_{$1}^{$2}{$3}$0
+endsnippet
+
+snippet ;biglor "Big Disjunction" iA
+\\bigvee_{$1}^{$2}{$3}$0
+endsnippet
+
+snippet ;bigcap "Big Intersecion" iA
+\\bigcap_{$1}^{$2}{$3}$0
+endsnippet
+
+snippet ;bigcup "Big Union" iA
+\\bigcup_{$1}^{$2}{$3}$0
+endsnippet
+
+snippet ;qall "Universal Quantifier" iA
+\\qall{$1}{$2}$0
+endsnippet
+
+snippet ;qex "Existential Quantifier" iA
+\\qex{$1}{$2}$0
+endsnippet
+
+snippet ;norm "Norm" iA
+\\langle $1 \\rangle$0
+endsnippet
+
+snippet ;rar "right arrow" iA
+\\rightarrow$0
+endsnippet
+
+snippet ;Rar "Right arrow" iA
+\\Rightarrow$0 
+endsnippet
+
+snippet ;lar "left arrow" iA
+\\leftarrow$0
+endsnippet
+
+snippet ;Lar "Left arrow" iA
+\\Leftarrow$0 
+endsnippet
+
+snippet ;bar "bidirectional arrow" iA
+\\leftrightarrow$0
+endsnippet
+
+snippet ;Bar "Bidirectional arrow" iA
+\\Leftrightarrow$0
+endsnippet
+
+snippet ;iar "Injective arrow" iA
+\\xhookrightarrow$0
+endsnippet
+
+snippet ;sar "Surjective arrow" iA
+\\twoheadrightarrow$0
+endsnippet
+
+snippet ;join "Join" iA
+$1 \\downarrow_{$3} $2 $0
+endsnippet
+
+snippet ;rrule "Right rule" iA
+$2 \rightarrow_{$1} $3 $0
+endsnippet
+
+snippet ;lrule "Left rule" iA
+$2 \leftarrow_{$1} $3 $0
+endsnippet
+
+snippet ;ideal "Ideal" iA
+\\mathfrak{$1}$0
+endsnippet
+
+snippet ;field "Field" iA
+\\mathscr{$1}$0
+endsnippet
+
+snippet ;ring "Ring" iA
+\\mathcal{$1}$0
+endsnippet
+
+snippet ;salg "Sigma algebra" iA
+\$${1:\\sigma}\$-algebra
+endsnippet
+
+snippet ;smeasur "S measurable" iA
+\$${1:\\mathcal{S}}\$-measurable
+endsnippet
+
+snippet ;ubar "Underbar" iA
+\\underbar{\$$1\$}$0
+endsnippet
+
+snippet ;obar "Overbar" iA
+\\overbar{$1}$0
+endsnippet
+
+snippet ;oar "Overarrow" iA
+\\overrightarrow{$1}$0
+endsnippet
+
+snippet ;seq "Sequence of symbols" iA
+$1_1$2 ${3:$1_2$2 }\\dots${4:$2 $1_{$5}}$0
+endsnippet
+
+snippet ;polyring "Polyring" iA
+$1[$2${3:_1, \\dots, $2_{$4}}]$0
+endsnippet
+
+snippet ;bigO "Big-O notation" iA
+\\mathcal{O}($1)$0
+endsnippet
+
+snippet ;\\ "Backslash" iA
+\\textbackslash$0
+endsnippet
+
+snippet ;// "Fraction" iA
+\\frac{$1}{$2}$0
+endsnippet
+
+snippet ;grob "Groebner" iA
+Gr\"obner $0
+endsnippet
+
+snippet ;index "Index" iA
+[$1 : $2]$0
+endsnippet
+
+snippet ;aut "Aut" iA
+\\Aut_{$1}{$2}$0
+endsnippet
+
+snippet ;spec "Spec" iA
+\\spec{$1}$0
+endsnippet
+
+snippet ;mspec "m-Spec" iA
+\\m-Spec{$1}$0
+endsnippet
+
+snippet ;gal "Gal" iA
+\\Gal($1)$0
+endsnippet
+
+snippet ;quadmod "QuadMod" iA
+\\quadmod($1)$0
+endsnippet
+
+snippet ;preord "PreOrder" iA
+\\preord($1)$0
+endsnippet
+
+snippet ;semialg "SemiAlgebraic" iA
+\\semialgebraic($1)$0
+endsnippet
+
+snippet ';prime(\d+)' "LaTeX array" riA
+$1^{`!p
+primes = ""
+for _ in range(0, int(match.group(1))): primes += "\prime"
+snip.rv = primes`}$0
+endsnippet	
+
+# Latex-related
+snippet ;; "Inline Math" iA
+$$1$$0
+endsnippet
+
+snippet ;env "General Environment" iA
+\begin{$1}
+	$0
+\end{$1}
+endsnippet
+
+snippet ;thm "Theorem Environment" iA
+\begin{theorem}
+	$0
+\end{theorem}
+endsnippet
+
+snippet ;proof "Proof Environment" iA
+\begin{proof}
+	$0
+\end{proof}
+endsnippet
+
+snippet ;lemma "Lemma Environment" iA
+\begin{lemma}
+	$0
+\end{lemma}
+endsnippet
+
+snippet ;prop "Proposition Environment" iA
+\begin{proposition}
+	$0
+\end{proposition}
+endsnippet
+
+snippet ;def "Definition Environment" iA
+\begin{definition}
+	$0
+\end{definition}
+endsnippet
+
+snippet ;remark "Remark Environment" iA
+\begin{remark}
+	$0
+\end{remark}
+endsnippet
+
+snippet ;example "Example Environment" iA
+\begin{example}
+	$0
+\end{example}
+endsnippet
+
+snippet ;cor "Corollary Environment" iA
+\begin{corollary}
+	$0
+\end{corollary}
+endsnippet
+
+snippet ;eq "Equation Environment" iA
+\begin{equation*}
+	$0
+\end{equation*}
+endsnippet
+
+snippet ;notation "Notation Environment" iA
+\begin{notation}
+	$0
+\end{notation}
+endsnippet
+
+snippet ;enum "Enumerate Environment" iA
+\begin{enumerate}
+	\item $0
+\end{enumerate}
+endsnippet
+
+snippet ;itemi "Itemize Environment" iA
+\begin{itemize}
+	\item $0
+\end{itemize}
+endsnippet
+
+snippet ;table "Table environment" iA
+\begin{table}[${1:htpb}]
+	\centering
+	\caption{${2:caption}}
+	\label{tab:${3:label}}
+	\begin{tabular}{${5:c}}
+	$0${5/((?<=.)c|l|r)|./(?1: & )/g}
+	\end{tabular}
+\end{table}
+endsnippet
+
+snippet ;fig "Figure environment" iA
+\begin{figure}[${1:htpb}]
+	\centering
+	\includegraphics[width=${3:0.8}\textwidth]{./figures/$2}
+	\caption{${4:$2}}
+	\label{fig:${5:${2/\W+/-/g}}}
+\end{figure}
+endsnippet
+
+global !p
+from os import getcwd
+from os import system
+from os.path import exists
+
+def stringify_args(rex, num):
+	stringify = []
+	for x in rex.group(1).split(","):
+		stringify.append("\'" + x + "\'")
+	if(num == -1):
+		return stringify
+	return stringify[:num]
+
+def joinArgsFstArg(rex):
+	stringify = stringify_args(rex, -1)
+	# The [1:-1] removes the extra quotes
+	first_arg = stringify[0][1:-1]
+	return ' '.join(stringify), first_arg
+
+def stringToPath(s):
+	return s.replace(' ', '\\ ')
+
+def removeExtraQuotes(s):
+	return s[1:-1]
+
+# file_name: either '/kldb.tex' or '/idxdb.tex'
+# cmd_path: either '/home/jose/.local/scripts/add-knowledge -p ' or '/home/jose/.local/scripts/add-glossary -p '
+# prefix_entry: either ' -e \'index=' or ' -e \'newglossaryentry{'
+# prefix_output: either "\\intro{" or "\\glsadd{"
+def aux_add_cmd(file_name, cmd_path, prefix_entry, prefix_output):
+	curr_dir = getcwd()
+	curr_file = curr_dir + file_name
+	curr_file_path = stringToPath(curr_file)
+	if(not(exists(curr_file))):
+		file_cmd = 'touch ' + curr_file_path
+		system(file_cmd)
+	add_cmd=cmd_path + curr_file_path + ' '
+	args, first_arg = joinArgsFstArg(match)
+	command = "if ! grep " + curr_file + prefix_entry + first_arg + '}\'; then ' + add_cmd + args + '; fi'
+	system(command)
+	return prefix_output + first_arg + '}'
+endglobal
+
+snippet ';intro(\w+[,\w+[\s\w]*]*)  ' "Intro Knowledge" riA
+`!p
+snip.rv = aux_add_cmd('/kldb.tex', '/home/jose/.local/scripts/add-knowledge -p ', ' -e \'index=', "\\intro{")
+` $0
+endsnippet
+
+snippet ;kl "Use Knowledge" iA
+\\kl{$1}$0
+endsnippet
+
+snippet ';gloss(\w+[,\w+[\s\w]*]*)  ' "Introduce new glossary term" riA
+`!p
+snip.rv = aux_add_cmd('/idxdb.tex', '/home/jose/.local/scripts/add-glossary -p ', ' -e \'newglossaryentry{', "\\glsadd{")
+` $0
+endsnippet
+
+snippet ;glt "Use Glossary term" iA
+\\gls{$1}$0
+endsnippet
+
+snippet ';input(\w+[,\w+[\s\w]*]*)  ' "Input file" riA
+`!p
+args = stringify_args(match, 3)
+num_args = len(args)
+if (num_args == 3):
+	name, title_name, latex_header = args[0], args[1], args[2]
+elif (num_args == 2):
+	name, title_name, latex_header = args[0], args[1], "section"
+elif (num_args == 1):
+	name, title_name, latex_header = args[0], "", ""
+else:
+	name, title_name, latex_header = "_new_file_", "new_title", ""
+name = name[1:-1]
+file_name = name + ".tex"
+system("touch " + file_name)
+if(1 < num_args and num_args < 4):
+	system("echo \\\\" + latex_header + "{" + title_name + "} > " + file_name)
+snip.rv = "\\input{" + name + "}"
+`
+$0
+endsnippet 
+
+snippet ';Seq(.+[,.+[\s.]*]*)  ' "Sequence of symbols - advanced" riA
+`!p
+args = stringify_args(match,5)
+num_args = len(args)
+
+template, last_index, op, is_open, uses_snd = "blank.", "n", ",", False, False
+if (num_args > 0):
+	template = removeExtraQuotes(args[0].strip())
+if (num_args > 1):
+	last_index = removeExtraQuotes(args[1].strip())
+if (num_args > 2):
+	op = removeExtraQuotes(args[2].strip())
+if (num_args > 3):
+	is_open = removeExtraQuotes(args[3].strip()) == 'o'
+if (num_args > 4):
+	is_open = removeExtraQuotes(args[3].strip()) == 'o'
+	uses_snd = removeExtraQuotes(args[4].strip()) == '2'
+
+if(op == ' '):
+	op = ","
+
+last_index = last_index.strip()
+
+if(uses_snd):
+	second_term = template.replace("_", "_2") + " " + op + " "
+else:
+	second_term = ""
+
+if(is_open):
+	last_term = ""
+else:
+	last_term = " " + op + " " + template.replace("_", "_{" + last_index + "}")
+
+snip.rv = template.replace("_", "_1") + " " + op + " " + second_term + "\\dots" + last_term
+`$0
+endsnippet
+
+global !p
+def create_matrix_placeholders(snip):
+	# Create anonymous snippet body
+	anon_snippet_body = ""
+
+	# Get start and end line number of expanded snippet
+	start = snip.snippet_start[0]
+	end = snip.snippet_end[0]
+
+  # Append current line into anonymous snippet
+	for i in range(start, end + 1):
+		anon_snippet_body += snip.buffer[i]
+		anon_snippet_body += "" if i == end else "\n"
+
+	# Delete expanded snippet line till second to last line
+	for i in range(start, end):
+		del snip.buffer[start]
+
+	# Empty last expanded snippet line while preserving the line
+	snip.buffer[start] = ''
+
+	# Expand anonymous snippet
+	snip.expand_anon(anon_snippet_body)
+
+def create_matrix(cols, rows, sep, start, end):
+	res = ""
+	placeholder = 1
+	for _ in range(0, int(rows)):
+		res += start + f"${placeholder} "
+		placeholder += 1
+		for _ in range(0, int(cols) - 1):
+			res += sep + f" ${placeholder} "
+			placeholder += 1
+		res += end
+	return res[:-1]
+endglobal
+
+post_jump "create_matrix_placeholders(snip)"
+snippet ';pmatrix(\d+),(\d+)' "LaTeX pmatrix" r
+\begin{pmatrix}
+`!p
+snip.rv = create_matrix(match.group(1), match.group(2), "&", "\t", "\\\\\\\\\n")
+`$0
+\end{pmatrix}
+endsnippet
+
+post_jump "create_matrix_placeholders(snip)"
+snippet ';bmatrix(\d+),(\d+)' "LaTeX bmatrix" r
+\begin{bmatrix}
+`!p
+snip.rv = create_matrix(match.group(1), match.group(2), "&", "\t", "\\\\\\\\\n")
+`$0
+\end{bmatrix}
+endsnippet
+
+post_jump "create_matrix_placeholders(snip)"
+snippet ';Bmatrix(\d+),(\d+)' "LaTeX Bmatrix" r
+\begin{Bmatrix}
+`!p
+snip.rv = create_matrix(match.group(1), match.group(2), "&", "\t", "\\\\\\\\\n")
+`$0
+\end{Bmatrix}
+endsnippet
+
+post_jump "create_matrix_placeholders(snip)"
+snippet ';det(\d+),(\d+)' "LaTeX vmatrix" r
+\begin{vmatrix}
+`!p
+snip.rv = create_matrix(match.group(1), match.group(2), "&", "\t", "\\\\\\\\\n")
+`$0
+\end{vmatrix}
+endsnippet
+
+post_jump "create_matrix_placeholders(snip)"
+snippet ';piecewise(\d+)' "Piecewise function" r
+\begin{cases}
+`!p
+snip.rv = create_matrix(2, match.group(1), "&", "\t", "\\\\\\\\\n")
+`$0
+\end{cases}
+endsnippet
+
+snippet ;template "Basic template" iA
+\documentclass[a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage[english]{babel}
+\usepackage{amsmath, amssymb}
+
+\title{$1}
+\author{$2}
+\date{${3:\today}}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+$4
+\end{abstract}
+
+$0
+
+\end{document}
+endsnippet

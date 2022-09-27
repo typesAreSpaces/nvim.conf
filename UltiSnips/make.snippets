@@ -1,0 +1,39 @@
+snippet ;base "Base makefile" iA
+CXX=g++
+CFLAGS=-Wall -Wextra -Wno-unused-parameter -std=c++17
+CINCLUDE=-I/usr/local/include -L/usr/local/lib
+CLIBS=-lArtemisCpp -lsfml-graphics -lsfml-window -lsfml-system
+
+IDIR=include
+ODIR=obj
+SDIR=src
+LDIR=lib
+TDIR=tests
+BIN=bin/${1:main}
+
+SRC=\$(wildcard \$(SDIR)/*.cpp)
+DEPS=\$(wildcard \$(IDIR)/*.h)
+OBJS=\$(SRC:\$(SDIR)/%.cpp=\$(ODIR)/%.o) 
+FLAGS=-I\$(SDIR) -I$(IDIR)
+
+\$(ODIR)/%.o: \$(SDIR)/%.cpp \$(DEPS) 
+	@mkdir -p obj
+	\$(CXX) -g -c -o \$@ \$(FLAGS) \\
+		\$(CFLAGS) \$(CINCLUDE) $<
+
+\$(BIN): \$(OBJS) 
+	@mkdir -p bin
+	\$(CXX) -g -o \$@ \$(OBJS) \\
+		\$(FLAGS) -lpthread \\
+		\$(CFLAGS) \$(CINCLUDE)
+
+.PHONY: clean
+clean:
+	rm -rf \$(BIN)
+	rm -rf \$(ODIR)/*
+endsnippet
+
+snippet ;: "Make rule" iA
+${1:target}: ${2:deps}
+	$0
+endsnippet
