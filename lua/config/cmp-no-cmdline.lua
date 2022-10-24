@@ -35,27 +35,7 @@ cmp.setup({
       else
         fallback()
       end
-    end, {"i","s",}),
-    ["<Tab>"] = cmp.mapping(function(fallback)
-      if vim.fn["UltiSnips#CanJumpForwards"]() == 1 then
-        press("<ESC>:call UltiSnips#JumpForwards()<CR>")
-      elseif cmp.visible() then
-        cmp.select_next_item()
-      elseif has_any_words_before() then
-        press("<Tab>")
-      else
-        fallback()
-      end
-    end, {"i","s",}),
-    ["<S-Tab>"] = cmp.mapping(function(fallback)
-      if vim.fn["UltiSnips#CanJumpBackwards"]() == 1 then
-        press("<ESC>:call UltiSnips#JumpBackwards()<CR>")
-      elseif cmp.visible() then
-        cmp.select_prev_item()
-      else
-        fallback()
-      end
-    end, {"i","s",}),
+    end, {"i","s",}), 
   },
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
