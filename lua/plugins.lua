@@ -6,6 +6,7 @@ return require('packer').startup(function()
   }
 
   -- # IDE Experience
+  use 'wfxr/minimap.vim'
   use { 
     'williamboman/nvim-lsp-installer', 
     event = "BufWinEnter", 

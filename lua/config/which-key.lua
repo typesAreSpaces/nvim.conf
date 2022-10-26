@@ -62,6 +62,8 @@ local mappings = {
     f = {'<cmd>lua vim.lsp.buf.formatting()<CR>', "Formatting"},
   },
 
+  m = {"<cmd>:MinimapToggle<CR>", "Minimap Toggle"},
+
   n = {
     name = "NvimTree",
     t = {"<cmd>:NvimTreeToggle<CR>", "Toggle"},
@@ -89,8 +91,10 @@ local mappings = {
 
   v = {
     name = "VimTex",
-    a = {"<cmd>lua ToggleActiveRefresh()<CR>", "Toggle Active Refresh"},
-    s = {"<cmd>mksession! session<CR><cmd>echon 'Session saved'<CR>", "Save session"},
+  },
+
+  o = {
+    name = "Org Mode"
   },
 
   p = { "<cmd>lua ParentFile()<CR><CR>", "Go to Parent File"},

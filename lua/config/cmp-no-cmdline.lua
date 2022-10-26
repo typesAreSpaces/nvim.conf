@@ -35,7 +35,7 @@ cmp.setup({
       else
         fallback()
       end
-    end, {"i","s",}),
+    end, {"i","s",}), 
     ["<Tab>"] = cmp.mapping(function(fallback)
       if vim.fn["UltiSnips#CanJumpForwards"]() == 1 then
         press("<ESC>:call UltiSnips#JumpForwards()<CR>")
