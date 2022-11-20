@@ -4,8 +4,8 @@ wilder.setup({
   modes = {':', '/', '?'},
   next_key = '<C-n>',
   previous_key = '<C-p>',
-  accept_key = '<Down>',
-  reject_key = '<Up>',
+  accept_key = '<Tab>',
+  reject_key = '<S-Tab>',
 })
 
 wilder.set_option('pipeline', {
@@ -48,5 +48,8 @@ wilder.set_option('renderer', wilder.popupmenu_renderer(
     -- 'single', 'double', 'rounded' or 'solid'
     -- can also be a list of 8 characters, see :h wilder#popupmenu_border_theme() for more details
     border = 'rounded',
+    min_width = '100%', -- minimum height of the popupmenu, can also be a number
+    min_height = '50%', -- to set a fixed height, set max_height to the same value
+    reverse = 0,        -- if 1, shows the candidates from bottom to top
   })
 ))
