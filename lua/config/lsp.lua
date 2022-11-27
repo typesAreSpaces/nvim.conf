@@ -20,7 +20,8 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'texlab', 'pyright', 'clangd', 'tsserver', 'hls', 'rust_analyzer' }
+-- local servers = { 'texlab', 'pyright', 'clangd', 'tsserver', 'hls', 'rust_analyzer' }
+local servers = { 'texlab', 'clangd', 'tsserver', 'hls', 'rust_analyzer' }
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 for _, lsp in ipairs(servers) do
@@ -36,27 +37,27 @@ for _, lsp in ipairs(servers) do
 end
 
 -- Extra setup for pyright
-local configs = require 'lspconfig/configs'
-local util = require 'lspconfig/util'
+--local configs = require 'lspconfig/configs'
+--local util = require 'lspconfig/util'
 
-configs["pyright"] = {
-  default_config = {
-    cmd = {"pyright-langserver", "--stdio"};
-    filetypes = {"python"};
-    root_dir = util.root_pattern(".git", "setup.py",  "setup.cfg", "pyproject.toml", "requirements.txt");
-    settings = {
-      python = {
-        analysis = {
-          autoSearchPaths = true;
-          useLibraryCodeForTypes = true;
-        };
-      };
-    };
-  };
-  docs = {
-    description = [[
-    https://github.com/microsoft/pyright
-    `pyright`, a static type checker and language server for python
-    ]];
-  };
-}
+--configs["pyright"] = {
+  --default_config = {
+    --cmd = {"pyright-langserver", "--stdio"};
+    --filetypes = {"python"};
+    --root_dir = util.root_pattern(".git", "setup.py",  "setup.cfg", "pyproject.toml", "requirements.txt");
+    --settings = {
+      --python = {
+        --analysis = {
+          --autoSearchPaths = true;
+          --useLibraryCodeForTypes = true;
+        --};
+      --};
+    --};
+  --};
+  --docs = {
+    --description = [[
+    --https://github.com/microsoft/pyright
+    --`pyright`, a static type checker and language server for python
+    --]];
+  --};
+--}
