@@ -87,6 +87,7 @@ local mappings = {
     b = {'<cmd>Telescope buffers <CR>', "Buffers"},
     h = {'<cmd>Telescope help_tags<CR>', "Help Tags"},
     u = {'<cmd>Telescope ultisnips<CR>', "UltinSnippets"},
+    t = {'<cmd>Telescope telescope-tabs list_tabs<CR>', "Tabs"},
   },
 
   v = {

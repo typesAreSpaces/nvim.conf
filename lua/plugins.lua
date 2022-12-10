@@ -2,7 +2,7 @@ return require('packer').startup(function()
   -- # Packer can manage itself
   use { 
     'wbthomason/packer.nvim', 
-    cmd = { 'PackerCompile', 'PackerInstall', 'PackerUpdate', 'PackerClean', 'PackerSync', 'PackerLoad' } 
+    --cmd = { 'PackerCompile', 'PackerInstall', 'PackerUpdate', 'PackerClean', 'PackerSync', 'PackerLoad' } 
   }
 
   -- # IDE Experience
@@ -12,29 +12,29 @@ return require('packer').startup(function()
     event = "BufWinEnter", 
     config = get_config("lsp-install") 
   }
-  use {
-    'kyazdani42/nvim-tree.lua',
-    requires = {
-      'kyazdani42/nvim-web-devicons', -- optional, for file icon
-    },
-    config = get_config("lua-tree")
-  }
+   use {
+     'kyazdani42/nvim-tree.lua',
+     requires = {
+       'kyazdani42/nvim-web-devicons', -- optional, for file icon
+     },
+     config = get_config("lua-tree")
+   }
   -- Install texlab using paru
   -- not nvim-lsp-installer 
   use { 
     'neovim/nvim-lspconfig', 
     config = get_config("lsp") 
   }
-  use { 
-    'nvim-treesitter/nvim-treesitter', 
-    run = ':TSUpdate', 
-    --event = "BufWinEnter",
-    config = get_config("treesitter") 
-  }
-  use { 
-    'nvim-treesitter/playground', 
-    after = "nvim-treesitter" 
-  }
+   use { 
+     'nvim-treesitter/nvim-treesitter', 
+     run = ':TSUpdate', 
+     --event = "BufWinEnter",
+     config = get_config("treesitter") 
+   }
+   use { 
+     'nvim-treesitter/playground', 
+     after = "nvim-treesitter" 
+   }
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-buffer'
   use 'hrsh7th/cmp-path'
@@ -49,6 +49,12 @@ return require('packer').startup(function()
     requires = { {'nvim-lua/plenary.nvim'} },
     cmd = "Telescope",
     config = get_config("telescope")
+  }
+  use {
+    'LukasPietzschmann/telescope-tabs',
+    requires = { 'nvim-telescope/telescope.nvim' },
+    after = "telescope.nvim",
+    config = get_config("conf-telescope-tabs")
   }
   use { 
     'fhill2/telescope-ultisnips.nvim',
