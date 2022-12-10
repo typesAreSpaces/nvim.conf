@@ -50,6 +50,12 @@ return require('packer').startup(function()
     cmd = "Telescope",
     config = get_config("telescope")
   }
+  use {
+    'LukasPietzschmann/telescope-tabs',
+    requires = { 'nvim-telescope/telescope.nvim' },
+    after = "telescope.nvim",
+    config = get_config("conf-telescope-tabs")
+  }
   use { 
     'fhill2/telescope-ultisnips.nvim',
     after = "telescope.nvim",
@@ -94,14 +100,14 @@ return require('packer').startup(function()
   use 'iamcco/markdown-preview.nvim'
   use 'rhysd/vim-grammarous'
   use 'sotte/presenting.vim'
-   use {
-     'nvim-orgmode/orgmode', 
-     config = get_config("orgmode-config")
-   }
-   use {
-     'akinsho/org-bullets.nvim', 
-     config = get_config("org-bullets-config")
-   }
+  use {
+    'nvim-orgmode/orgmode', 
+    config = get_config("orgmode-config")
+  }
+  use {
+    'akinsho/org-bullets.nvim', 
+    config = get_config("org-bullets-config")
+  }
 
   -- # Themes
   use 'chriskempson/base16-vim'
