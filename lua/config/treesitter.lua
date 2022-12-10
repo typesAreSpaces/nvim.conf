@@ -1,5 +1,5 @@
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = "all",
+  ensure_installed = { "bash", "bibtex", "c", "cmake", "cpp", "javascript", "json", "julia", "latex", "lua", "make", "markdown", "python", "rust", "toml", "typescript", "vim", "yaml" },
   ignore_install = {},
   incremental_selection = { enable = true,
     keymaps = {
