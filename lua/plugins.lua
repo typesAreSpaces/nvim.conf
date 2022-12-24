@@ -6,44 +6,6 @@ return require('packer').startup(function()
   }
 
   -- # IDE Experience
-  use 'wfxr/minimap.vim'
-  use { 
-    'williamboman/nvim-lsp-installer', 
-    event = "BufWinEnter", 
-    config = get_config("lsp-install") 
-  }
-   use {
-     'kyazdani42/nvim-tree.lua',
-     requires = {
-       'kyazdani42/nvim-web-devicons', -- optional, for file icon
-     },
-     config = get_config("lua-tree")
-   }
-  -- Install texlab using paru
-  -- not nvim-lsp-installer 
-  use { 
-    'neovim/nvim-lspconfig', 
-    config = get_config("lsp") 
-  }
-   use { 
-     'nvim-treesitter/nvim-treesitter', 
-     run = ':TSUpdate', 
-     --event = "BufWinEnter",
-     config = get_config("treesitter") 
-   }
-   use { 
-     'nvim-treesitter/playground', 
-     after = "nvim-treesitter" 
-   }
-  use 'hrsh7th/cmp-nvim-lsp'
-  use 'hrsh7th/cmp-buffer'
-  use 'hrsh7th/cmp-path'
-  use 'hrsh7th/cmp-cmdline'
-  use 'quangnguyen30192/cmp-nvim-ultisnips'
-  use { 
-    'hrsh7th/nvim-cmp', 
-    config = get_config("cmp-no-cmdline") 
-  }
   use { 
     'nvim-telescope/telescope.nvim', 
     requires = { {'nvim-lua/plenary.nvim'} },
@@ -100,14 +62,6 @@ return require('packer').startup(function()
   use 'iamcco/markdown-preview.nvim'
   use 'rhysd/vim-grammarous'
   use 'sotte/presenting.vim'
-  use {
-    'nvim-orgmode/orgmode', 
-    config = get_config("orgmode-config")
-  }
-  use {
-    'akinsho/org-bullets.nvim', 
-    config = get_config("org-bullets-config")
-  }
 
   -- # Themes
   use 'chriskempson/base16-vim'
