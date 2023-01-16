@@ -129,6 +129,7 @@ return require('packer').startup(function()
     config = get_config("lualine") 
   }
   use 'ryanoasis/vim-devicons'
+  use 'eandrju/cellular-automaton.nvim' 
 
   -- # Syntax
   use {
