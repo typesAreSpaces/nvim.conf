@@ -27,3 +27,4 @@ set_keymap('t', '<C-v><Esc>', '<Esc>', opts)
 
 -- # Telescope bindings:
 set_keymap('n', '<CR>', '<cmd>Telescope find_files prompt_prefix=🔍<CR>', opts)
+set_keymap('n', '<C-x><C-f>', '<cmd>Telescope find_files prompt_prefix=🔍<CR>', opts)
