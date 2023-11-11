@@ -1,141 +1,183 @@
-return require('packer').startup(function()
-  -- # Packer can manage itself
-  use { 
-    'wbthomason/packer.nvim', 
-    --cmd = { 'PackerCompile', 'PackerInstall', 'PackerUpdate', 'PackerClean', 'PackerSync', 'PackerLoad' } 
-  }
-
+return {
   -- # IDE Experience
-  use 'wfxr/minimap.vim'
-  use { 
+  'wfxr/minimap.vim',
+  { 
     'williamboman/nvim-lsp-installer', 
     event = "BufWinEnter", 
-    config = get_config("lsp-install") 
-  }
-   use {
-     'kyazdani42/nvim-tree.lua',
-     requires = {
-       'kyazdani42/nvim-web-devicons', -- optional, for file icon
-     },
-     config = get_config("lua-tree")
-   }
+    config = function()
+      require 'config.lsp-install'
+    end
+  },
+  {
+    'kyazdani42/nvim-tree.lua',
+    dependencies = {
+      'kyazdani42/nvim-web-devicons', -- optional, for file icon
+    },
+    config = function()
+      require 'config.lua-tree'
+    end
+  },
   -- Install texlab using paru
   -- not nvim-lsp-installer 
-  use { 
+  { 
     'neovim/nvim-lspconfig', 
-    config = get_config("lsp") 
-  }
-   use { 
-     'nvim-treesitter/nvim-treesitter', 
-     run = ':TSUpdate', 
-     --event = "BufWinEnter",
-     config = get_config("treesitter") 
-   }
-   use { 
-     'nvim-treesitter/playground', 
-     after = "nvim-treesitter" 
-   }
-  use 'hrsh7th/cmp-nvim-lsp'
-  use 'hrsh7th/cmp-buffer'
-  use 'hrsh7th/cmp-path'
-  use 'hrsh7th/cmp-cmdline'
-  use 'quangnguyen30192/cmp-nvim-ultisnips'
-  use { 
+    config = function()
+      require 'config.lsp'
+    end
+  },
+  { 
+    'nvim-treesitter/nvim-treesitter', 
+    run = ':TSUpdate', 
+    --event = "BufWinEnter",
+    config = function()
+      require 'config.treesitter'
+    end,
+    dependencies = {
+      'nvim-treesitter/playground', 
+    }
+  },
+  'hrsh7th/cmp-nvim-lsp',
+  'hrsh7th/cmp-buffer',
+  'hrsh7th/cmp-path',
+  'hrsh7th/cmp-cmdline',
+  'quangnguyen30192/cmp-nvim-ultisnips',
+  { 
     'hrsh7th/nvim-cmp', 
-    config = get_config("cmp-no-cmdline") 
-  }
-  use { 
+    config =function()
+      require 'config.cmp-no-cmdline'
+    end
+  },
+  { 
     'nvim-telescope/telescope.nvim', 
-    requires = { {'nvim-lua/plenary.nvim'} },
+    dependencies = { 
+      'nvim-lua/plenary.nvim', 
+      'LukasPietzschmann/telescope-tabs',
+      'fhill2/telescope-ultisnips.nvim',
+      'fhill2/telescope-ultisnips.nvim',
+      'nvim-telescope/telescope-file-browser.nvim'
+    },
     cmd = "Telescope",
-    config = get_config("telescope")
-  }
-  use {
+    config = function()
+      require 'config.telescope'
+    end
+  },
+  {
     'LukasPietzschmann/telescope-tabs',
-    requires = { 'nvim-telescope/telescope.nvim' },
-    after = "telescope.nvim",
-    config = get_config("conf-telescope-tabs")
-  }
-  use { 
-    'fhill2/telescope-ultisnips.nvim',
-    after = "telescope.nvim",
-    config = get_config("telescope-ultisnips")
-  }
-  use {
+    dependencies = {
+      'nvim-telescope/telescope.nvim', 
+    },
+    config = function()
+      require 'config.conf-telescope-tabs'
+    end
+  },
+  --{ 
+    --'fhill2/telescope-ultisnips.nvim',
+    --dependencies = {
+      --'SirVer/ultisnips',
+      --'nvim-telescope/telescope.nvim', 
+    --},
+    --config = function()
+      --require 'config.telescope-ultisnips'
+    --end
+  --},
+  {
     'nvim-telescope/telescope-file-browser.nvim',
-    after = "telescope.nvim",
-    config = get_config("telescope-file-browser-config")
-  }
-  use 'mbbill/undotree'
-  use 'jeffkreeftmeijer/vim-numbertoggle'
-  use 'preservim/nerdcommenter'
-  use 'puremourning/vimspector'
-  use { 
+    dependencies = {
+      'nvim-telescope/telescope.nvim', 
+    },
+    config = function()
+      require 'config.telescope-file-browser-config'
+    end
+  },
+  'mbbill/undotree',
+  'jeffkreeftmeijer/vim-numbertoggle',
+  'preservim/nerdcommenter',
+  'puremourning/vimspector',
+  { 
     'SirVer/ultisnips',
-    requires = "honza/vim-snippets", 
-    config = get_config("ultisnips") 
-  }
-  use { 
+    dependencies = {
+      "honza/vim-snippets"
+    },
+    config = function()
+      require 'config.ultisnips'
+    end
+  },
+  { 
     'lervag/vimtex', 
-    config = get_config("vimtex") 
-  }
-  use 'mhinz/neovim-remote'
-  use 'tpope/vim-fugitive'
-  use 'skywind3000/asyncrun.vim'
-  use { 
+    config = function()
+      require 'config.vimtex'
+    end
+  },
+  'mhinz/neovim-remote',
+  'tpope/vim-fugitive',
+  'skywind3000/asyncrun.vim',
+  { 
     'folke/which-key.nvim', 
     event = "BufWinEnter", 
-    config = get_config("which-key") 
-  }
-  use { 
+    config = function()
+      require 'config.which-key'
+    end
+  },
+  { 
     'gelguy/wilder.nvim', 
     run = ':UpdateRemotePlugins', 
     event = "BufWinEnter",
-    config = get_config("wilder") 
-  }
-  use 'MattesGroeger/vim-bookmarks'
-  use 'voldikss/vim-mma'
+    config = function()
+      require 'config.wilder'
+    end
+  },
+  'MattesGroeger/vim-bookmarks',
+  'voldikss/vim-mma',
 
   -- # Neovim apps 
-  use 'iamcco/markdown-preview.nvim'
-  use 'rhysd/vim-grammarous'
-  use 'sotte/presenting.vim'
-  use {
+  'iamcco/markdown-preview.nvim',
+  'rhysd/vim-grammarous',
+  'sotte/presenting.vim',
+  {
     'nvim-orgmode/orgmode', 
-    config = get_config("orgmode-config")
-  }
-  use {
+    config = function()
+      require 'config.orgmode-config'
+    end
+  },
+  {
     'akinsho/org-bullets.nvim', 
-    config = get_config("org-bullets-config")
-  }
+    config = function()
+      require 'config.org-bullets-config'
+    end
+  },
 
   -- # Themes
-  use 'chriskempson/base16-vim'
-  use 'sainnhe/gruvbox-material'
-  use { 
+  'chriskempson/base16-vim',
+  'sainnhe/gruvbox-material',
+  { 
     'folke/tokyonight.nvim', 
     branch = 'main' 
-  }
-  use 'shaunsingh/nord.nvim'
-  use 'b4skyx/serenade'
-  use 'dracula/vim' 
+  },
+  'shaunsingh/nord.nvim',
+  'b4skyx/serenade',
+  'dracula/vim', 
 
   -- # Ricing
-  use 'mhinz/vim-startify'
-  use { 
+  'mhinz/vim-startify',
+  { 
     'nvim-lualine/lualine.nvim', 
-    requires = { 'kyazdani42/nvim-web-devicons', opt = true }, 
+    dependencies = { 'kyazdani42/nvim-web-devicons', opt = true }, 
     event = "BufWinEnter",
-    config = get_config("lualine") 
-  }
-  use 'ryanoasis/vim-devicons'
-  use 'eandrju/cellular-automaton.nvim' 
+    config = function()
+      require 'config.lualine'
+    end
+  },
+  'ryanoasis/vim-devicons',
+  'eandrju/cellular-automaton.nvim', 
 
   -- # Syntax
-  use {
+  {
     'bohlender/vim-smt2', 
-    config = get_config("smt2") 
-  }
-  use 'plasticboy/vim-markdown'
-  use 'coreysharris/Macaulay2.vim'
-end)
+    config = function()
+      require 'config.smt2'
+    end
+  },
+  'plasticboy/vim-markdown',
+  'coreysharris/Macaulay2.vim',
+}
+
