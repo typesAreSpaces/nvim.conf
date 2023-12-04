@@ -37,6 +37,8 @@ local mappings = {
     c = {"<cmd>lua change_kbd()<CR>", "Toggle Caps Lock to ESC <-> Ctrl"}
   },
 
+  p = {"<cmd>:Lazy<CR>", "Plugins"},
+
   l = {
     name = "LSP",
     i = {
@@ -92,13 +94,12 @@ local mappings = {
 
   v = {
     name = "VimTex",
+    p = { "<cmd>lua ParentFile()<CR><CR>", "Go to Parent File"},
   },
 
   o = {
     name = "Org Mode"
-  },
-
-  p = { "<cmd>lua ParentFile()<CR><CR>", "Go to Parent File"},
+  }, 
 
   w = {
     name = "Windows",
