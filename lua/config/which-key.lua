@@ -19,6 +19,8 @@ local mappings = {
     name = "NERDCommenter",
   },
 
+  d = {"<cmd>:Oil<CR>", "Oil"},
+
   g = {
     name = "Fugitive Git",
     s = {"<cmd>G<CR>", "Git Status"},
