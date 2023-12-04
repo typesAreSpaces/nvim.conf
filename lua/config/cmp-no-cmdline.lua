@@ -22,22 +22,27 @@ cmp.setup({
   sources = {
     { name = "ultisnips" },
   },
+  window = {
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered(),
+  },
   mapping = {
     ["<C-Space>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         if vim.fn["UltiSnips#CanExpandSnippet"]() == 1 then
           return press("<C-R>=UltiSnips#ExpandSnippet()<CR>")
         end
-
-        cmp.select_next_item()
       elseif has_any_words_before() then
         press("<Space>")
       else
         fallback()
       end
-    end, {"i","s",}), 
+    end, {"i","s"}), 
+    ["<C-g>"] = cmp.mapping.abort(),
     ["<Tab>"] = cmp.mapping(function(fallback)
-      if vim.fn["UltiSnips#CanJumpForwards"]() == 1 then
+      if cmp.visible() then
+        cmp.confirm({ select = true })
+      elseif vim.fn["UltiSnips#CanJumpForwards"]() == 1 then
         press("<ESC>:call UltiSnips#JumpForwards()<CR>")
       else
         press("<Tab>")
@@ -50,7 +55,6 @@ cmp.setup({
         fallback()
       end
     end, {"i","s",}),
-
     ["<C-n>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
@@ -64,12 +68,12 @@ cmp.setup({
       else
         fallback()
       end
-    end, {"i","s",}),
+    end, {"i","s",})
   },
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
     { name = 'ultisnips' },
   }, {
     { name = 'buffer' },
-  })
+  }) 
 })
