@@ -19,6 +19,8 @@ local mappings = {
     name = "NERDCommenter",
   },
 
+  d = {"<cmd>:Oil<CR>", "Oil"},
+
   g = {
     name = "Fugitive Git",
     s = {"<cmd>G<CR>", "Git Status"},
@@ -36,6 +38,8 @@ local mappings = {
     name = "Keyboard Settings",
     c = {"<cmd>lua change_kbd()<CR>", "Toggle Caps Lock to ESC <-> Ctrl"}
   },
+
+  p = {"<cmd>:Lazy<CR>", "Plugins"},
 
   l = {
     name = "LSP",
@@ -92,13 +96,12 @@ local mappings = {
 
   v = {
     name = "VimTex",
+    p = { "<cmd>lua ParentFile()<CR><CR>", "Go to Parent File"},
   },
 
   o = {
     name = "Org Mode"
-  },
-
-  p = { "<cmd>lua ParentFile()<CR><CR>", "Go to Parent File"},
+  }, 
 
   w = {
     name = "Windows",

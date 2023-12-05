@@ -39,15 +39,27 @@ cmp.setup({
       end
     end, {"i","s"}), 
     ["<C-g>"] = cmp.mapping.abort(),
-    ["<Tab>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.confirm({ select = true })
-      elseif vim.fn["UltiSnips#CanJumpForwards"]() == 1 then
-        press("<ESC>:call UltiSnips#JumpForwards()<CR>")
-      else
-        press("<Tab>")
-      end
-    end, {"i","s",}),
+    ["<Tab>"] = cmp.mapping({
+      i = function(fallback)
+        if cmp.visible() then
+          cmp.confirm({ select = true })
+        elseif vim.fn["UltiSnips#CanJumpForwards"]() == 1 then
+          press("<ESC>:call UltiSnips#JumpForwards()<CR>")
+        else
+          press("<Tab>")
+        end
+      end,
+      s = function(fallback)
+        if cmp.visible() then
+          cmp.confirm({ select = true })
+        elseif vim.fn["UltiSnips#CanJumpForwards"]() == 1 then
+          press("<ESC>:call UltiSnips#JumpForwards()<CR>")
+        else
+          press("<Tab>")
+        end
+      end,
+      c = cmp.config.disable,
+    }),
     ["<S-Tab>"] = cmp.mapping(function(fallback)
       if vim.fn["UltiSnips#CanJumpBackwards"]() == 1 then
         press("<ESC>:call UltiSnips#JumpBackwards()<CR>")

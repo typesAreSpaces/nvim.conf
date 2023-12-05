@@ -146,6 +146,16 @@ return {
     end
   },
 
+  {
+    'stevearc/oil.nvim',
+    opts = {},
+    -- Optional dependencies
+    dependencies = { "kyazdani42/nvim-web-devicons" },
+    config = function()
+      require 'config.oil'
+    end
+  },
+
   -- # Themes
   'chriskempson/base16-vim',
   'sainnhe/gruvbox-material',
