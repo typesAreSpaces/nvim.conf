@@ -28,3 +28,11 @@ set_keymap('t', '<C-v><Esc>', '<Esc>', opts)
 -- # Telescope bindings:
 set_keymap('n', '<CR>', '<cmd>Telescope find_files prompt_prefix=🔍<CR>', opts)
 set_keymap('n', '<C-x><C-f>', '<cmd>Telescope find_files prompt_prefix=🔍<CR>', opts)
+
+-- # Yanky bindings:
+vim.keymap.set("n", "<c-p>", "<Plug>(YankyPreviousEntry)")
+vim.keymap.set("n", "<c-n>", "<Plug>(YankyNextEntry)")
+vim.keymap.set({"n","x"}, "p", "<Plug>(YankyPutAfter)")
+vim.keymap.set({"n","x"}, "P", "<Plug>(YankyPutBefore)")
+vim.keymap.set({"n","x"}, "gp", "<Plug>(YankyGPutAfter)")
+vim.keymap.set({"n","x"}, "gP", "<Plug>(YankyGPutBefore)")
