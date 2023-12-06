@@ -40,5 +40,4 @@ vim.cmd([[color gruvbox-material]])
 vim.opt.conceallevel = 2
 vim.opt.concealcursor = 'nc'
 
---vim.opt.autochdir = true
-vim.cmd [[ set autochdir ]]
+vim.opt.autochdir = false
