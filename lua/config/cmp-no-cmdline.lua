@@ -91,6 +91,7 @@ cmp.setup({
       option = {
         keyword_length = 3
       }
-    }
+    },
+    { name = 'path' }
   }) 
 }) 
