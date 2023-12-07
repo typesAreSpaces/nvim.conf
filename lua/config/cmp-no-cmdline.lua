@@ -18,10 +18,7 @@ cmp.setup({
     expand = function(args)
       vim.fn["UltiSnips#Anon"](args.body)
     end,
-  },
-  sources = {
-    { name = "ultisnips" },
-  },
+  }, 
   window = {
     completion = cmp.config.window.bordered(),
     documentation = cmp.config.window.bordered(),
@@ -84,8 +81,17 @@ cmp.setup({
   },
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
-    { name = 'ultisnips' },
-  }, {
-    { name = 'buffer' },
+    { 
+      name = 'ultisnips',
+      keyword_length = 3,
+    },
+    { 
+      name = 'buffer',
+      keyword_length = 3,
+      option = {
+        keyword_length = 3
+      }
+    },
+    { name = 'path' }
   }) 
-})
+}) 
