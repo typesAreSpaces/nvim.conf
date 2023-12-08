@@ -15,7 +15,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 require('lazy').setup('plugins')
+require('customization')
 require('settings')
 require('mappings')
-require('customization')
 

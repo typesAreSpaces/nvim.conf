@@ -37,11 +37,6 @@ vim.g.gruvbox_contrast_dark = 'hard'
 vim.g.gruvbox_invert_selection = '0'
 vim.cmd([[color gruvbox-material]])
 
-vim.cmd([[
-highlight! YankyPut guibg=None guifg=None ctermbg=1 ctermfg=15
-highlight! YankyYanked guibg=None guifg=None ctermbg=1 ctermfg=15
-]])
-
 vim.opt.conceallevel = 2
 vim.opt.concealcursor = 'nc'
 
