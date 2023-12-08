@@ -81,7 +81,6 @@ local mappings = {
 
   t = {
     name = "Telescope",
-    c = {"<cmd>Telescope commands<CR>", "Commands"},
     f = {
       name = "Files Utility",
       b = {"<cmd>Telescope file_browser prompt_prefix=🔍<CR>", "File Browser"},
