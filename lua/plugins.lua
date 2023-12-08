@@ -2,11 +2,16 @@ return {
   -- # IDE Experience
   'wfxr/minimap.vim',
   {
+    "nanozuki/tabby.nvim",
+    opts = {
+      config = function()
+        require 'config.tabby'
+      end
+    }
+  },
+  {
     "gbprod/yanky.nvim",
     opts = {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
       config = function()
         require 'config.yanky'
       end

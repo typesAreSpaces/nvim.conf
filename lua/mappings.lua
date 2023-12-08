@@ -19,8 +19,6 @@ set_keymap('o', '<C-g>', '<Esc>', opts)
 set_keymap('c', '<C-g>', '<C-c><Esc>', opts)
 set_keymap('i', '<C-g>', '<Esc>', opts)
 
-set_keymap('n', '<C-t>', '<cmd>terminal<CR>', opts)
-
 -- # Terminal:
 set_keymap('t', '<Esc>', '<C-\\><C-n>', opts)
 set_keymap('t', '<C-v><Esc>', '<Esc>', opts)
@@ -37,3 +35,12 @@ vim.keymap.set({"n","x"}, "p", "<Plug>(YankyPutAfter)")
 vim.keymap.set({"n","x"}, "P", "<Plug>(YankyPutBefore)")
 vim.keymap.set({"n","x"}, "gp", "<Plug>(YankyGPutAfter)")
 vim.keymap.set({"n","x"}, "gP", "<Plug>(YankyGPutBefore)")
+
+-- # Tabby bindings:
+vim.api.nvim_set_keymap("n", "<leader>tn", ":$tabnew<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<leader>tc", ":tabclose<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<leader>to", ":tabonly<CR>", { noremap = true })
+--vim.api.nvim_set_keymap("n", "<C-Tab>", ":tabn<CR>", { noremap = true })
+--vim.api.nvim_set_keymap("n", "<C-S-Tab>", ":tabp<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<leader>tmp", ":-tabmove<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<leader>tmn", ":+tabmove<CR>", { noremap = true })
