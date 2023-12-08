@@ -1,5 +1,3 @@
-vim.g.mapleader = " "
-
 vim.cmd([[
 augroup custom_term
 autocmd!
