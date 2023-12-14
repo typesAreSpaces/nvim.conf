@@ -1,13 +1,11 @@
 return {
   -- # IDE Experience
-  'wfxr/minimap.vim',
+  'wfxr/minimap.vim', 
   {
     "nanozuki/tabby.nvim",
-    opts = {
-      config = function()
-        require 'config.tabby'
-      end
-    }
+    config = function()
+      require 'config.tabby-config'
+    end
   },
   {
     "gbprod/yanky.nvim",
