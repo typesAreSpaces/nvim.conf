@@ -35,7 +35,7 @@ cmp.setup({
         fallback()
       end
     end, {"i","s"}), 
-    ["<C-g>"] = cmp.mapping.abort(),
+    --["<C-g>"] = cmp.mapping.abort(),
     ["<Tab>"] = cmp.mapping({
       i = function(fallback)
         if cmp.visible() then
