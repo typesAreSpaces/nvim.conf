@@ -1,3 +1,5 @@
+local actions = require('telescope.actions')
+
 -- You don't need to set any of these options.
 -- IMPORTANT!: this is only a showcase of how you can set default options!
 require("telescope").setup {
@@ -9,6 +11,9 @@ require("telescope").setup {
       mappings = {
         ["i"] = {
           -- your custom insert mode mappings
+          ["<tab>"] = actions.select_default,
+          ["<C-s>"] = actions.send_selected_to_qflist,
+          ["<C-d>"] = actions.add_selected_to_qflist
         },
         ["n"] = {
           -- your custom normal mode mappings

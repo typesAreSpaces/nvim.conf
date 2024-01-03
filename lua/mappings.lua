@@ -24,8 +24,7 @@ set_keymap('t', '<Esc>', '<C-\\><C-n>', opts)
 set_keymap('t', '<C-v><Esc>', '<Esc>', opts)
 
 -- # Telescope bindings:
-set_keymap('n', '<CR>', '<cmd>Telescope find_files prompt_prefix=🔍<CR>', opts)
-set_keymap('n', '<C-x><C-f>', '<cmd>Telescope find_files prompt_prefix=🔍<CR>', opts)
+set_keymap('n', '<C-x><C-f>', '<cmd>Telescope file_browser prompt_prefix=🔍<CR>', opts)
 
 -- # Yanky bindings:
 vim.keymap.set("n", "<c-p>", "<Plug>(YankyPreviousEntry)")
