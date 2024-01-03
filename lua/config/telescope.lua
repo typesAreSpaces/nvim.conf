@@ -6,6 +6,8 @@ require('telescope').setup{
       i = {
         ["<C-h>"] = "which_key",
         ["<C-g>"] = actions.close,
+        ["<C-s>"] = actions.send_selected_to_qflist,
+        ["<C-d>"] = actions.add_selected_to_qflist,
         ["<esc>"] = actions.close
       }
     },
