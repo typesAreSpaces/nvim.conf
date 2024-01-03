@@ -13,7 +13,8 @@ require("telescope").setup {
           -- your custom insert mode mappings
           ["<tab>"] = actions.select_default,
           ["<C-s>"] = actions.send_selected_to_qflist,
-          ["<C-d>"] = actions.add_selected_to_qflist
+          ["<C-d>"] = actions.add_selected_to_qflist,
+          ["<C-t>"] = actions.select_tab
         },
         ["n"] = {
           -- your custom normal mode mappings
