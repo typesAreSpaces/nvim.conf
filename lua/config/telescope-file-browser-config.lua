@@ -6,6 +6,8 @@ require("telescope").setup {
   extensions = {
     file_browser = {
       theme = "ivy",
+      respect_gitignore = false,
+      hidden = { file_browser = true, folder_browser = true },
       -- disables netrw and use telescope-file-browser in its place
       hijack_netrw = true,
       mappings = {
