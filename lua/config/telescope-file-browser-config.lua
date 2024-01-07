@@ -16,6 +16,7 @@ require("telescope").setup {
           ["<tab>"] = actions.select_default,
           ["<C-s>"] = actions.send_selected_to_qflist,
           ["<C-d>"] = actions.add_selected_to_qflist,
+          ["<C-m>"] = actions.add_selection,
           ["<C-t>"] = actions.select_tab
         },
         ["n"] = {
