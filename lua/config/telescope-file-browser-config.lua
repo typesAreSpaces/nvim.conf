@@ -18,7 +18,8 @@ require("telescope").setup {
           ["<C-s>"] = actions.send_selected_to_qflist,
           ["<C-d>"] = actions.add_selected_to_qflist,
           ["<C-m>"] = actions.add_selection,
-          ["<C-t>"] = actions.select_tab
+          ["<C-t>"] = actions.select_tab,
+          ["<C-g>"] = actions.close
         },
         ["n"] = {
           -- your custom normal mode mappings
