@@ -188,6 +188,7 @@ return {
   -- # Themes
   'chriskempson/base16-vim',
   'sainnhe/gruvbox-material',
+  'NTBBloodbath/doom-one.nvim',
   {
     'folke/tokyonight.nvim',
     branch = 'main'
