@@ -66,7 +66,7 @@ local mappings = {
     f = {'<cmd>lua vim.lsp.buf.formatting()<CR>', "Formatting"},
   },
 
-  m = {"<cmd>:MinimapToggle<CR>", "Minimap Toggle"},
+  m = {"<cmd>:make<CR>", "Make"},
 
   n = {
     name = "NvimTree",

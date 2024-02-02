@@ -33,10 +33,10 @@ vim.wo.number = true
 --opt('guifont', "InputMono\ NF:h30")
 
 base16colorspace = 256
---vim.g.gruvbox_contrast_dark = 'hard'
---vim.g.gruvbox_invert_selection = '0'
---vim.cmd([[color gruvbox-material]])
-vim.cmd([[color doom-one]])
+vim.g.gruvbox_contrast_dark = 'hard'
+vim.g.gruvbox_invert_selection = '0'
+vim.cmd([[color gruvbox-material]])
+--vim.cmd([[color doom-one]])
 
 vim.opt.conceallevel = 2
 vim.opt.concealcursor = 'nc'
