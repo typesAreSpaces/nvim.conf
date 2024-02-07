@@ -2,6 +2,14 @@ return {
   -- # IDE Experience
   'wfxr/minimap.vim', 
   {
+    'stevearc/overseer.nvim',
+    opts = {
+      config = function()
+        require 'config.overseer'
+      end
+    },
+  },
+  {
     "folke/zen-mode.nvim",
     opts = {
       window = {
