@@ -39,8 +39,6 @@ local mappings = {
     c = {"<cmd>lua change_kbd()<CR>", "Toggle Caps Lock to ESC <-> Ctrl"}
   },
 
-  p = {"<cmd>:Lazy<CR>", "Plugins"},
-
   l = {
     name = "LSP",
     i = {
@@ -71,6 +69,14 @@ local mappings = {
   n = {
     name = "NvimTree",
     t = {"<cmd>:NvimTreeToggle<CR>", "Toggle"},
+  },
+
+  p = {"<cmd>:Lazy<CR>", "Plugins"},
+
+  r = {
+    name = "Overseer",
+    t = {"<cmd>OverseerToggle<CR>", "Toggle"},
+    r = {"<cmd>OverseerRun<CR>", "Run"},
   },
 
   s = {
