@@ -214,8 +214,17 @@ return {
       require 'config.lualine'
     end
   },
+  {
+    'stevearc/dressing.nvim',
+    opts = {
+      config = function()
+        require 'config.dressing'
+      end
+    },
+  },
   'ryanoasis/vim-devicons',
   'eandrju/cellular-automaton.nvim',
+
 
   -- # Syntax
   {
