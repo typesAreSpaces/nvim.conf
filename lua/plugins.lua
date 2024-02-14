@@ -1,5 +1,6 @@
 return {
   -- # IDE Experience
+  'henrik/vim-indexed-search',
   'wfxr/minimap.vim', 
   {
     'stevearc/overseer.nvim',
