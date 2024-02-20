@@ -2,3 +2,14 @@ snippet ;debug "Debug" iA
 DEBUG(__FILE__, __LINE__, ENABLE_DEBUGGING, lprint(">> $1", $0));
 endsnippet
 
+snippet ;slog "Start time logging" iA
+$ifdef LOG_TIME
+START_LOG_TIME("$1")
+$endif$0
+endsnippet
+
+snippet ;elog "End time logging" iA
+$ifdef LOG_TIME
+END_LOG_TIME("$1")
+$endif$0
+endsnippet
