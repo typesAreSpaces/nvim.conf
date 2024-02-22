@@ -165,7 +165,6 @@ return {
       require 'config.wilder'
     end
   },
-  'MattesGroeger/vim-bookmarks',
   'voldikss/vim-mma',
 
   -- # Neovim apps
