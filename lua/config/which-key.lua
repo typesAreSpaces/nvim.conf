@@ -9,117 +9,72 @@ wk.setup {
 }
 
 local mappings = {
-  b = {
-    name = "Bookmarks",
-    j = {"<cmd>BookmarkNext<CR>", "Go to Next Bookmark"},
-    k = {"<cmd>BookmarkPrev<CR>", "Go to Previous Bookmark"},
-  },
-  
-  c = {
-    name = "NERDCommenter",
-  },
-
-  d = {"<cmd>:Oil<CR>", "Oil"},
-
-  g = {
-    name = "Fugitive Git",
-    s = {"<cmd>G<CR>", "Git Status"},
-    j = {"<cmd>diffget //3<cr>", "Git master"},
-    f = {"<cmd>diffget //2<cr>", "Git HEAD"},
-  },
-
-  j = {
-    name = "Jumps",
-    o = {"<C-o>", "Jump to Previous Position"},
-    i = {"<C-i>", "Jump to Next Position"}
-  },
-  
-  k = {
-    name = "Keyboard Settings",
-    c = {"<cmd>lua change_kbd()<CR>", "Toggle Caps Lock to ESC <-> Ctrl"}
-  },
-
-  l = {
-    name = "LSP",
-    i = {
-      c = {":LspInfo<cr>", "Connected Language Servers"},
-      m = {"<cmd>lua vim.lsp.buf.implementation()<CR>", "Implementation"}
-    },
-    c = {":LspInfo<cr>", "Connected Language Servers"},
-    k = {"<cmd>lua vim.lsp.buf.signature_help()<cr>", "Signature Help"},
-    K = {'<cmd>lua vim.lsp.buf.hover()<CR>', "Hover Command"},
-    w = {'<cmd>lua vim.lsp.buf.add_workspace_folder()<cr>', "Add Workspace Folder"},
-    W = {'<cmd>lua vim.lsp.buf.remove_workspace_folder()<cr>', "Remove Workspace Folder"},
-    l = {'<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<cr>', "List Workspace Folders"},
-    t = {'<cmd>lua vim.lsp.buf.type_definition()<cr>', "Type Definition"},
-    d = {'<cmd>lua vim.lsp.buf.definition()<cr>', "Go To Definition"},
-    D = {'<cmd>lua vim.lsp.buf.declaration()<cr>', "Go To Declaration"},
-    r = {'<cmd>lua vim.lsp.buf.references()<cr>', "References"},
-    R = {'<cmd>lua vim.lsp.buf.rename()<CR>', "Rename"},
-    a = {'<cmd>lua vim.lsp.buf.code_action()<CR>', "Code Action"},
-    e = {'<cmd>lua vim.diagnostic.show_line_diagnostics()<CR>', "Show Line Diagnostics"},
-    n = {'<cmd>lua vim.diagnostic.goto_prev()<CR>', "Go To Next Diagnostic"},
-    N = {'<cmd>lua vim.diagnostic.goto_next()<CR>', "Go To Previous Diagnostic"},
-    q = {"<cmd>lua vim.diagnostic.setloclist()<CR>", "Diagnostic Set LocList"},
-    f = {'<cmd>lua vim.lsp.buf.formatting()<CR>', "Formatting"},
-  },
-
-  m = {"<cmd>:Make<CR>", "Async :Make"},
-
-  n = {
-    name = "NvimTree",
-    t = {"<cmd>:NvimTreeToggle<CR>", "Toggle"},
-  },
-
-  p = {"<cmd>:Lazy<CR>", "Plugins"},
-
-  r = {
-    name = "Overseer",
-    t = {"<cmd>OverseerToggle<CR>", "Toggle"},
-    r = {"<cmd>OverseerRun<CR>", "Run"},
-  },
-
-  s = {
-    name = "Source Configs",
-    u = {"<cmd>call UltiSnips#RefreshSnippets()<CR><cmd>echon 'Snippets refreshed'<CR>", "Source UltinSnippets Config"},
-    c = {"<cmd>source $HOME/.config/nvim/init.lua<CR><cmd>echon 'Config sourced'<CR>", "Source nvim Config"},
-  },
-
-  t = {
-    name = "Telescope",
-    f = {
-      name = "Files Utility",
-      b = {"<cmd>Telescope file_browser prompt_prefix=🔍<CR>", "File Browser"},
-      f = {"<cmd>Telescope find_files prompt_prefix=🔍<CR>", "Find Files"},
-    },
-    g = {"<cmd>Telescope live_grep<CR>", "Live Grep"},
-    b = {'<cmd>Telescope buffers <CR>', "Buffers"},
-    h = {'<cmd>Telescope help_tags<CR>', "Help Tags"},
-    u = {'<cmd>Telescope ultisnips<CR>', "UltinSnippets"},
-    t = {'<cmd>Telescope telescope-tabs list_tabs<CR>', "Tabs"},
-  },
-
-  v = {
-    name = "VimTex",
-    p = { "<cmd>lua ParentFile()<CR><CR>", "Go to Parent File"},
-  },
-
-  o = {
-    name = "Org Mode"
-  }, 
-
-  w = {
-    name = "Windows",
-    j = {"<C-w><C-j>", "Move to the window on the left"},
-    k = {"<C-w><C-k>", "Move to the window above"},
-    l = {"<C-w><C-l>", "Move to the window below"},
-    h = {"<C-w><C-h>", "Move to the window on the left"},
-    y = {"<cmd>exe 'vertical resize +5'<CR>", "Resize vertical line +5"},
-    u = {"<cmd>exe 'resize -5' <CR>", "Resize horizontal line -5"},
-    i = {"<cmd>exe 'resize +5' <CR>", "Resize horizontal line +5"},
-    o = {"<cmd>exe 'vertical resize -5'<CR>", "Resize vertical line -5"},
-  }
+  { "<leader>b", group = "Bookmarks" },
+  { "<leader>bj", "<cmd>BookmarkNext<CR>", desc = "Go to Next Bookmark" },
+  { "<leader>bk", "<cmd>BookmarkPrev<CR>", desc = "Go to Previous Bookmark" },
+  { "<leader>c", group = "NERDCommenter" },
+  { "<leader>d", "<cmd>:Oil<CR>", desc = "Oil" },
+  { "<leader>g", group = "Fugitive Git" },
+  { "<leader>gf", "<cmd>diffget //2<cr>", desc = "Git HEAD" },
+  { "<leader>gj", "<cmd>diffget //3<cr>", desc = "Git master" },
+  { "<leader>gs", "<cmd>G<CR>", desc = "Git Status" },
+  { "<leader>j", group = "Jumps" },
+  { "<leader>ji", "<C-i>", desc = "Jump to Next Position" },
+  { "<leader>jo", "<C-o>", desc = "Jump to Previous Position" },
+  { "<leader>k", group = "Keyboard Settings" },
+  { "<leader>kc", "<cmd>lua change_kbd()<CR>", desc = "Toggle Caps Lock to ESC <-> Ctrl" },
+  { "<leader>l", group = "LSP" },
+  { "<leader>lD", "<cmd>lua vim.lsp.buf.declaration()<cr>", desc = "Go To Declaration" },
+  { "<leader>lK", "<cmd>lua vim.lsp.buf.hover()<CR>", desc = "Hover Command" },
+  { "<leader>lN", "<cmd>lua vim.diagnostic.goto_next()<CR>", desc = "Go To Previous Diagnostic" },
+  { "<leader>lR", "<cmd>lua vim.lsp.buf.rename()<CR>", desc = "Rename" },
+  { "<leader>lW", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<cr>", desc = "Remove Workspace Folder" },
+  { "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<CR>", desc = "Code Action" },
+  { "<leader>lc", ":LspInfo<cr>", desc = "Connected Language Servers" },
+  { "<leader>ld", "<cmd>lua vim.lsp.buf.definition()<cr>", desc = "Go To Definition" },
+  { "<leader>le", "<cmd>lua vim.diagnostic.show_line_diagnostics()<CR>", desc = "Show Line Diagnostics" },
+  { "<leader>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>", desc = "Formatting" },
+  { "<leader>lic", ":LspInfo<cr>", desc = "Connected Language Servers" },
+  { "<leader>lim", "<cmd>lua vim.lsp.buf.implementation()<CR>", desc = "Implementation" },
+  { "<leader>lk", "<cmd>lua vim.lsp.buf.signature_help()<cr>", desc = "Signature Help" },
+  { "<leader>ll", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<cr>", desc = "List Workspace Folders" },
+  { "<leader>ln", "<cmd>lua vim.diagnostic.goto_prev()<CR>", desc = "Go To Next Diagnostic" },
+  { "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<CR>", desc = "Diagnostic Set LocList" },
+  { "<leader>lr", "<cmd>lua vim.lsp.buf.references()<cr>", desc = "References" },
+  { "<leader>lt", "<cmd>lua vim.lsp.buf.type_definition()<cr>", desc = "Type Definition" },
+  { "<leader>lw", "<cmd>lua vim.lsp.buf.add_workspace_folder()<cr>", desc = "Add Workspace Folder" },
+  { "<leader>m", "<cmd>:Make<CR>", desc = "Async :Make" },
+  { "<leader>n", group = "NvimTree" },
+  { "<leader>nt", "<cmd>:NvimTreeToggle<CR>", desc = "Toggle" },
+  { "<leader>o", group = "Org Mode" },
+  { "<leader>p", "<cmd>:Lazy<CR>", desc = "Plugins" },
+  { "<leader>r", group = "Overseer" },
+  { "<leader>rr", "<cmd>OverseerRun<CR>", desc = "Run" },
+  { "<leader>rt", "<cmd>OverseerToggle<CR>", desc = "Toggle" },
+  { "<leader>s", group = "Source Configs" },
+  { "<leader>sc", "<cmd>source $HOME/.config/nvim/init.lua<CR><cmd>echon 'Config sourced'<CR>", desc = "Source nvim Config" },
+  { "<leader>su", "<cmd>call UltiSnips#RefreshSnippets()<CR><cmd>echon 'Snippets refreshed'<CR>", desc = "Source UltinSnippets Config" },
+  { "<leader>t", group = "Telescope" },
+  { "<leader>tb", "<cmd>Telescope buffers <CR>", desc = "Buffers" },
+  { "<leader>tf", group = "Files Utility" },
+  { "<leader>tfb", "<cmd>Telescope file_browser prompt_prefix=🔍<CR>", desc = "File Browser" },
+  { "<leader>tff", "<cmd>Telescope find_files prompt_prefix=🔍<CR>", desc = "Find Files" },
+  { "<leader>tg", "<cmd>Telescope live_grep<CR>", desc = "Live Grep" },
+  { "<leader>th", "<cmd>Telescope help_tags<CR>", desc = "Help Tags" },
+  { "<leader>tt", "<cmd>Telescope telescope-tabs list_tabs<CR>", desc = "Tabs" },
+  { "<leader>tu", "<cmd>Telescope ultisnips<CR>", desc = "UltinSnippets" },
+  { "<leader>v", group = "VimTex" },
+  { "<leader>vp", "<cmd>lua ParentFile()<CR><CR>", desc = "Go to Parent File" },
+  { "<leader>w", group = "Windows" },
+  { "<leader>wh", "<C-w><C-h>", desc = "Move to the window on the left" },
+  { "<leader>wi", "<cmd>exe 'resize +5' <CR>", desc = "Resize horizontal line +5" },
+  { "<leader>wj", "<C-w><C-j>", desc = "Move to the window on the left" },
+  { "<leader>wk", "<C-w><C-k>", desc = "Move to the window above" },
+  { "<leader>wl", "<C-w><C-l>", desc = "Move to the window below" },
+  { "<leader>wo", "<cmd>exe 'vertical resize -5'<CR>", desc = "Resize vertical line -5" },
+  { "<leader>wu", "<cmd>exe 'resize -5' <CR>", desc = "Resize horizontal line -5" },
+  { "<leader>wy", "<cmd>exe 'vertical resize +5'<CR>", desc = "Resize vertical line +5" },
 }
 
 local opts = {prefix = '<leader>'}
-wk.register(mappings, opts)
+wk.add(mappings, opts)
