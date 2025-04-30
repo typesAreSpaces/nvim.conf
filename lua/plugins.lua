@@ -171,12 +171,12 @@ return {
   'iamcco/markdown-preview.nvim',
   'rhysd/vim-grammarous',
   'sotte/presenting.vim',
-  {
-    'nvim-orgmode/orgmode',
-    config = function()
-      require 'config.orgmode-config'
-    end
-  },
+  --{
+    --'nvim-orgmode/orgmode',
+    --config = function()
+      --require 'config.orgmode-config'
+    --end
+  --},
   {
     'akinsho/org-bullets.nvim',
     config = function()

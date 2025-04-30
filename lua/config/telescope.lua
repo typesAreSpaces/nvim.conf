@@ -8,7 +8,8 @@ require('telescope').setup{
         ["<C-g>"] = actions.close,
         ["<C-s>"] = actions.send_selected_to_qflist,
         ["<C-d>"] = actions.add_selected_to_qflist,
-        ["<esc>"] = actions.close
+        ["<esc>"] = actions.close,
+        ["<C-k>"] = require('telescope.actions').delete_buffer
       }
     },
     layout_strategy = 'flex',
