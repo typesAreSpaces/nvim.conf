@@ -1,5 +1,3 @@
-local nvim_lsp = require('lspconfig')
-
 -- Use an custom_on_attach function to only map the following keys 
 -- after the language server attaches to the current buffer
 local custom_on_attach = function(client, bufnr)
@@ -24,40 +22,51 @@ end
 local servers = { 'texlab', 'clangd', 'ts_ls', 'hls', 'rust_analyzer' }
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
-for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup({ 
-    on_attach = custom_on_attach,
-    capabilities = capabilities,
-    root_dir = function(fname)
-      return nvim_lsp.util.root_pattern(
-      'build.gradle', 'pom.xml', '.git'
-      )(fname) or vim.fn.getcwd()
+
+for _, server in ipairs(servers) do
+  vim.lsp.enable(server)
+  if config then
+    vim.lsp.config(server, {
+      on_attach = custom_on_attach,
+      capabilities = capabilities,
+      root_dir = function(fname)
+        return nvim_lsp.util.root_pattern(
+          'build.gradle', 'pom.xml', '.git'
+        )(fname) or vim.fn.getcwd()
+      end
+    })
+  end
+  --nvim_lsp[lsp].setup({ 
+    --on_attach = custom_on_attach,
+    --capabilities = capabilities,
+    --root_dir = function(fname)
+      --return vim.fn.getcwd()
+      --end
+      --})
     end
-  })
-end
 
--- Extra setup for pyright
---local configs = require 'lspconfig/configs'
---local util = require 'lspconfig/util'
+    -- Extra setup for pyright
+    --local configs = require 'lspconfig/configs'
+    --local util = require 'lspconfig/util'
 
---configs["pyright"] = {
-  --default_config = {
-    --cmd = {"pyright-langserver", "--stdio"};
-    --filetypes = {"python"};
-    --root_dir = util.root_pattern(".git", "setup.py",  "setup.cfg", "pyproject.toml", "requirements.txt");
-    --settings = {
-      --python = {
-        --analysis = {
-          --autoSearchPaths = true;
-          --useLibraryCodeForTypes = true;
-        --};
-      --};
-    --};
-  --};
-  --docs = {
-    --description = [[
-    --https://github.com/microsoft/pyright
-    --`pyright`, a static type checker and language server for python
-    --]];
-  --};
---}
+    --configs["pyright"] = {
+      --default_config = {
+        --cmd = {"pyright-langserver", "--stdio"};
+        --filetypes = {"python"};
+        --root_dir = util.root_pattern(".git", "setup.py",  "setup.cfg", "pyproject.toml", "requirements.txt");
+        --settings = {
+          --python = {
+            --analysis = {
+              --autoSearchPaths = true;
+              --useLibraryCodeForTypes = true;
+              --};
+              --};
+              --};
+              --};
+              --docs = {
+                --description = [[
+                --https://github.com/microsoft/pyright
+                --`pyright`, a static type checker and language server for python
+                --]];
+                --};
+                --}
