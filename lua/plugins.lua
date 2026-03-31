@@ -177,63 +177,63 @@ return {
       --require 'config.orgmode-config'
       --end
       --},
-      {
-        'akinsho/org-bullets.nvim',
-        config = function()
-          require 'config.org-bullets-config'
-        end
-      },
+      --{
+        --'akinsho/org-bullets.nvim',
+        --config = function()
+          --require 'config.org-bullets-config'
+          --end
+          --},
 
-      {
-        'stevearc/oil.nvim',
-        opts = {},
-        dependencies = { "kyazdani42/nvim-web-devicons" },
-        config = function()
-          require 'config.oil'
-        end
-      },
+          {
+            'stevearc/oil.nvim',
+            opts = {},
+            dependencies = { "kyazdani42/nvim-web-devicons" },
+            config = function()
+              require 'config.oil'
+            end
+          },
 
-      -- # Themes
-      'chriskempson/base16-vim',
-      'sainnhe/gruvbox-material',
-      'NTBBloodbath/doom-one.nvim',
-      {
-        'folke/tokyonight.nvim',
-        branch = 'main'
-      },
-      'shaunsingh/nord.nvim',
-      'b4skyx/serenade',
-      'dracula/vim',
+          -- # Themes
+          'chriskempson/base16-vim',
+          'sainnhe/gruvbox-material',
+          'NTBBloodbath/doom-one.nvim',
+          {
+            'folke/tokyonight.nvim',
+            branch = 'main'
+          },
+          'shaunsingh/nord.nvim',
+          'b4skyx/serenade',
+          'dracula/vim',
 
-      -- # Ricing
-      'mhinz/vim-startify',
-      {
-        'nvim-lualine/lualine.nvim',
-        dependencies = { 'kyazdani42/nvim-web-devicons', opt = true },
-        event = "BufWinEnter",
-        config = function()
-          require 'config.lualine'
-        end
-      },
-      {
-        'stevearc/dressing.nvim',
-        opts = {
-          config = function()
-            require 'config.dressing'
-          end
-        },
-      },
-      'ryanoasis/vim-devicons',
-      'eandrju/cellular-automaton.nvim',
+          -- # Ricing
+          'mhinz/vim-startify',
+          {
+            'nvim-lualine/lualine.nvim',
+            dependencies = { 'kyazdani42/nvim-web-devicons', opt = true },
+            event = "BufWinEnter",
+            config = function()
+              require 'config.lualine'
+            end
+          },
+          {
+            'stevearc/dressing.nvim',
+            opts = {
+              config = function()
+                require 'config.dressing'
+              end
+            },
+          },
+          'ryanoasis/vim-devicons',
+          'eandrju/cellular-automaton.nvim',
 
 
-      -- # Syntax
-      {
-        'bohlender/vim-smt2',
-        config = function()
-          require 'config.smt2'
-        end
-      },
-      'plasticboy/vim-markdown',
-      'coreysharris/Macaulay2.vim',
-    }
+          -- # Syntax
+          {
+            'bohlender/vim-smt2',
+            config = function()
+              require 'config.smt2'
+            end
+          },
+          'plasticboy/vim-markdown',
+          'coreysharris/Macaulay2.vim',
+        }
