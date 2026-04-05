@@ -39,6 +39,7 @@ vim.keymap.set({"n","x"}, "gP", "<Plug>(YankyGPutBefore)")
 
 -- # Tabby bindings:
 set_keymap('n', '<leader>tn', ':$tabnew<CR>', opts)
+set_keymap('n', '<leader>td', ':tab split<CR>', opts)
 set_keymap('n', '<leader>tc', ':tabclose<CR>', opts)
 set_keymap('n', '<leader>to', ':tabonly<CR>', opts)
 --set_keymap('n', '<C-tab>', ':tabnext<CR>', opts)
