@@ -4,36 +4,15 @@ return {
   'wfxr/minimap.vim', 
   {
     'stevearc/overseer.nvim',
-    opts = {
-      config = function()
-        require 'config.overseer'
-      end
-    },
+    config = function()
+      require 'config.overseer'
+    end
   },
   {
-    "folke/zen-mode.nvim",
-    opts = {
-      window = {
-        backdrop = 0.95, -- shade the backdrop of the Zen window. Set to 1 to keep the same as Normal
-        -- height and width can be:
-        -- * an absolute number of cells when > 1
-        -- * a percentage of the width / height of the editor when <= 1
-        -- * a function that returns the width or the height
-        width = 120, -- width of the Zen window
-        height = 1, -- height of the Zen window
-        -- by default, no options are changed for the Zen window
-        -- uncomment any of the options below, or add other vim.wo options you want to apply
-        options = {
-          -- signcolumn = "no", -- disable signcolumn
-          -- number = false, -- disable number column
-          -- relativenumber = false, -- disable relative numbers
-          -- cursorline = false, -- disable cursorline
-          -- cursorcolumn = false, -- disable cursor column
-          -- foldcolumn = "0", -- disable fold column
-          -- list = false, -- disable whitespace characters
-        },
-      },
-    }
+    "folke/zen-mode.nvim", 
+    config = function()
+      require 'config.zenmode'
+    end
   },
   {
     "nanozuki/tabby.nvim",
@@ -43,11 +22,9 @@ return {
   },
   {
     "gbprod/yanky.nvim",
-    opts = {
-      config = function()
-        require 'config.yanky'
-      end
-    },
+    config = function()
+      require 'config.yanky'
+    end
   },
   {
     'williamboman/nvim-lsp-installer',
@@ -171,69 +148,53 @@ return {
   'iamcco/markdown-preview.nvim',
   'rhysd/vim-grammarous',
   'sotte/presenting.vim',
-  --{
-    --'nvim-orgmode/orgmode',
-    --config = function()
-      --require 'config.orgmode-config'
-      --end
-      --},
-      --{
-        --'akinsho/org-bullets.nvim',
-        --config = function()
-          --require 'config.org-bullets-config'
-          --end
-          --},
+  {
+    'stevearc/oil.nvim',
+    opts = {},
+    dependencies = { "kyazdani42/nvim-web-devicons" },
+    config = function()
+      require 'config.oil'
+    end
+  },
 
-          {
-            'stevearc/oil.nvim',
-            opts = {},
-            dependencies = { "kyazdani42/nvim-web-devicons" },
-            config = function()
-              require 'config.oil'
-            end
-          },
+  -- # Themes
+  'chriskempson/base16-vim',
+  'sainnhe/gruvbox-material',
+  'NTBBloodbath/doom-one.nvim',
+  {
+    'folke/tokyonight.nvim',
+    branch = 'main'
+  },
+  'shaunsingh/nord.nvim',
+  'b4skyx/serenade',
+  'dracula/vim',
 
-          -- # Themes
-          'chriskempson/base16-vim',
-          'sainnhe/gruvbox-material',
-          'NTBBloodbath/doom-one.nvim',
-          {
-            'folke/tokyonight.nvim',
-            branch = 'main'
-          },
-          'shaunsingh/nord.nvim',
-          'b4skyx/serenade',
-          'dracula/vim',
+  -- # Ricing
+  'mhinz/vim-startify',
+  {
+    'nvim-lualine/lualine.nvim',
+    dependencies = { 'kyazdani42/nvim-web-devicons', opt = true },
+    event = "BufWinEnter",
+    config = function()
+      require 'config.lualine'
+    end
+  },
+  {
+    'stevearc/dressing.nvim',
+    config = function()
+      require 'config.dressing'
+    end
+  },
+  'ryanoasis/vim-devicons',
+  'eandrju/cellular-automaton.nvim',
 
-          -- # Ricing
-          'mhinz/vim-startify',
-          {
-            'nvim-lualine/lualine.nvim',
-            dependencies = { 'kyazdani42/nvim-web-devicons', opt = true },
-            event = "BufWinEnter",
-            config = function()
-              require 'config.lualine'
-            end
-          },
-          {
-            'stevearc/dressing.nvim',
-            opts = {
-              config = function()
-                require 'config.dressing'
-              end
-            },
-          },
-          'ryanoasis/vim-devicons',
-          'eandrju/cellular-automaton.nvim',
-
-
-          -- # Syntax
-          {
-            'bohlender/vim-smt2',
-            config = function()
-              require 'config.smt2'
-            end
-          },
-          'plasticboy/vim-markdown',
-          'coreysharris/Macaulay2.vim',
-        }
+  -- # Syntax
+  {
+    'bohlender/vim-smt2',
+    config = function()
+      require 'config.smt2'
+    end
+  },
+  'plasticboy/vim-markdown',
+  'coreysharris/Macaulay2.vim',
+}
