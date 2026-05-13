@@ -42,3 +42,8 @@ vim.opt.conceallevel = 2
 vim.opt.concealcursor = 'nc'
 
 vim.opt.autochdir = false
+
+vim.g.vim_markdown_conceal = 0
+vim.g.vim_markdown_conceal_code_blocks = 0
+vim.opt.conceallevel = 0
+

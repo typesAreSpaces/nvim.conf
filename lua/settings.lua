@@ -61,7 +61,7 @@ vim.api.nvim_create_user_command("Make", function(params)
   })
   task:start()
 end, {
-  desc = "Run your makeprg as an Overseer task",
-  nargs = "*",
-  bang = true,
+desc = "Run your makeprg as an Overseer task",
+nargs = "*",
+bang = true,
 })
