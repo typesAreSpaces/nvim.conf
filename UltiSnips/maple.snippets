@@ -2,6 +2,10 @@ snippet ;debug "Debug" iA
 DEBUG(__FILE__, __LINE__, ENABLE_DEBUGGING, $1)$0;
 endsnippet
 
+snippet ;dtag "Debug a simple tag" iA
+DEBUG(__FILE__, __LINE__, ENABLE_DEBUGGING, lprint(">> $0"));
+endsnippet
+
 snippet ;dvar "Debug Variable" iA
 DEBUG(__FILE__, __LINE__, ENABLE_DEBUGGING, lprint(">> $1", $1))$0;
 endsnippet
