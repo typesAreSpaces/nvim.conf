@@ -10,6 +10,10 @@ snippet ;dvar "Debug Variable" iA
 DEBUG(__FILE__, __LINE__, ENABLE_DEBUGGING, lprint(">> $1", $1))$0;
 endsnippet
 
+snippet ;dt "Debug Temporal Variable" iA
+DEBUG(__FILE__, __LINE__, ENABLE_DEBUGGING, lprint(">> [remove] $1", $1))$0;
+endsnippet
+
 snippet ;slog "Start time logging" iA
 $ifdef LOG_TIME
 START_LOG_TIME("$1")
