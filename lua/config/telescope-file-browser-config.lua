@@ -1,4 +1,5 @@
 local actions = require('telescope.actions')
+local action_state = require("telescope.actions.state")
 
 -- You don't need to set any of these options.
 -- IMPORTANT!: this is only a showcase of how you can set default options!
@@ -16,6 +17,11 @@ require("telescope").setup {
           -- your custom insert mode mappings
           ["<tab>"] = actions.select_default,
           ["<CR>"] = actions.select_default,
+          ["<C-c>"] = function(prompt_bufnr)
+            local selection = action_state.get_selected_entry()
+            actions.close(prompt_bufnr)
+            vim.api.nvim_put({selection.ordinal}, "c", true, true)
+          end,
           ["<C-s>"] = actions.send_selected_to_qflist,
           ["<C-d>"] = actions.add_selected_to_qflist,
           ["<C-m>"] = actions.add_selection,
@@ -32,3 +38,4 @@ require("telescope").setup {
 -- To get telescope-file-browser loaded and working with telescope,
 -- you need to call load_extension, somewhere after setup function:
 require("telescope").load_extension "file_browser"
+
