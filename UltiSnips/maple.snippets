@@ -1,17 +1,17 @@
 snippet ;debug "Debug" iA
-DEBUG(__FILE__, __LINE__, ENABLE_DEBUGGING, $1)$0;
+DEBUG(__FILE__, __LINE__, $1)$0;
 endsnippet
 
-snippet ;dtag "Debug a simple tag" iA
-DEBUG(__FILE__, __LINE__, ENABLE_DEBUGGING, lprint(">> $0"));
+snippet ;dmsg "Debug with a simple message" iA
+DEBUG(__FILE__, __LINE__, lprint(">> $0"));
 endsnippet
 
 snippet ;dvar "Debug Variable" iA
-DEBUG(__FILE__, __LINE__, ENABLE_DEBUGGING, lprint(">> $1", $1))$0;
+DEBUG(__FILE__, __LINE__, lprint(">> $1", $1))$0;
 endsnippet
 
 snippet ;dt "Debug Temporal Variable" iA
-DEBUG(__FILE__, __LINE__, ENABLE_DEBUGGING, lprint(">> [remove] $1", $1))$0;
+DEBUG(__FILE__, __LINE__, lprint(">> [remove] $1", $1))$0;
 endsnippet
 
 snippet ;slog "Start time logging" iA
