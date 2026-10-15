@@ -1,3 +1,32 @@
+-- Neovim 0.12 removed the all=false compatibility option used by the
+-- legacy nvim-treesitter branch. Adapt its custom query handlers to node lists.
+if vim.fn.has('nvim-0.12') == 1 then
+  local query = vim.treesitter.query
+  local add_predicate, add_directive = query.add_predicate, query.add_directive
+  local function adapt(register)
+    return function(name, handler, opts)
+      if type(opts) == 'table' and opts.all == false then
+        local legacy_handler = handler
+        handler = function(match, ...)
+          local nodes = {}
+          for id, captures in pairs(match) do
+            nodes[id] = captures[1]
+          end
+          return legacy_handler(nodes, ...)
+        end
+      end
+      return register(name, handler, opts)
+    end
+  end
+  query.add_predicate = adapt(add_predicate)
+  query.add_directive = adapt(add_directive)
+  -- The plugin can load these handlers before its configuration runs.
+  package.loaded['nvim-treesitter.query_predicates'] = nil
+  local ok, err = pcall(require, 'nvim-treesitter.query_predicates')
+  query.add_predicate, query.add_directive = add_predicate, add_directive
+  if not ok then error(err) end
+end
+
 require'nvim-treesitter.configs'.setup {
   ensure_installed = { "bash", "bibtex", "c", "cmake", "cpp", "javascript", "json", "julia", "latex", "lua", "make", "markdown", "python", "rust", "toml", "typescript", "vim", "vimdoc", "yaml" },
   ignore_install = {},

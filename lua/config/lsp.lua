@@ -16,66 +16,22 @@ local custom_on_attach = function(client, bufnr)
   buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
 end
 
--- Use a loop to conveniently call 'setup' on multiple servers and
--- map buffer local keybindings when the language server attaches
--- local servers = { 'texlab', 'pyright', 'clangd', 'ts_ls', 'hls', 'rust_analyzer' }
-local servers = { 'texlab', 'clangd', 'pyright' }
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
-
-for _, server in ipairs(servers) do
-  vim.lsp.enable(server)
-  if config then
-    vim.lsp.config(server, {
-      on_attach = custom_on_attach,
-      capabilities = capabilities,
-      root_dir = function(fname)
-        return nvim_lsp.util.root_pattern(
-          'build.gradle', 'pom.xml', '.git'
-        )(fname) or vim.fn.getcwd()
-      end
-    })
-  end
+-- Configure before enabling so completion capabilities and mappings apply.
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+for _, server in ipairs({ 'texlab', 'clangd', 'pyright' }) do
+  vim.lsp.config(server, { capabilities = capabilities })
 end
 
-vim.lsp.config('pyright', {
-  cmd = { 'pyright-langserver', '--stdio' },
-  filetypes = { 'python' },
-  root_markers = {
-    'pyproject.toml',
-    'setup.py',
-    'setup.cfg',
-    'requirements.txt',
-    '.git',
-  },
+-- Keep server-specific attach handlers supplied by nvim-lspconfig.
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('custom_lsp_attach', { clear = true }),
+  callback = function(args)
+    custom_on_attach(vim.lsp.get_client_by_id(args.data.client_id), args.buf)
+  end,
 })
 
-vim.lsp.enable('pyright')
+vim.lsp.config('clangd', {
+  filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'cuda' },
+})
 
--- Extra setup for pyright
---local configs = require 'lspconfig/configs'
---local util = require 'lspconfig/util'
-
---configs["pyright"] = {
-  --default_config = {
-    --cmd = {"pyright-langserver", "--stdio"};
-    --filetypes = {"python"};
-    --root_dir = util.root_pattern(".git", "setup.py",  "setup.cfg", "pyproject.toml", "requirements.txt");
-    --settings = {
-      --python = {
-        --analysis = {
-          --autoSearchPaths = true;
-          --useLibraryCodeForTypes = true;
-          --};
-          --};
-          --};
-          --};
-          --docs = {
-            --description = [[
-            --https://github.com/microsoft/pyright
-            --`pyright`, a static type checker and language server for python
-            --]];
-            --};
-            --}
-
-
+vim.lsp.enable({ 'texlab', 'clangd', 'pyright' })

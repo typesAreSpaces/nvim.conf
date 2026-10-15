@@ -27,13 +27,6 @@ return {
     end
   },
   {
-    'williamboman/nvim-lsp-installer',
-    event = "BufWinEnter",
-    config = function()
-      require 'config.lsp-install'
-    end
-  },
-  {
     'kyazdani42/nvim-tree.lua',
     dependencies = {
       'kyazdani42/nvim-web-devicons', -- optional, for file icon
@@ -42,8 +35,7 @@ return {
       require 'config.lua-tree'
     end
   },
-  -- Install texlab using paru
-  -- not nvim-lsp-installer
+  -- Language servers are installed externally and configured with vim.lsp.
   {
     'neovim/nvim-lspconfig',
     config = function()
@@ -52,7 +44,7 @@ return {
   },
   {
     'nvim-treesitter/nvim-treesitter',
-    run = ':TSUpdate',
+    build = ':TSUpdate',
     --event = "BufWinEnter",
     config = function()
       require 'config.treesitter'
@@ -136,7 +128,7 @@ return {
   },
   {
     'gelguy/wilder.nvim',
-    run = ':UpdateRemotePlugins',
+    build = ':UpdateRemotePlugins',
     event = "BufWinEnter",
     config = function()
       require 'config.wilder'
