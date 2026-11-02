@@ -27,10 +27,15 @@ if vim.fn.has('nvim-0.12') == 1 then
   if not ok then error(err) end
 end
 
+local function disable_large_buffer(_, bufnr)
+  return require('config.performance').is_large(bufnr)
+end
+
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "bash", "bibtex", "c", "cmake", "cpp", "javascript", "json", "julia", "latex", "lua", "make", "markdown", "python", "rust", "toml", "typescript", "vim", "vimdoc", "yaml" },
+  ensure_installed = { "bash", "bibtex", "c", "cmake", "cpp", "javascript", "json", "julia", "latex", "lua", "make", "markdown", "markdown_inline", "python", "rust", "toml", "typescript", "vim", "vimdoc", "yaml" },
   ignore_install = {},
   incremental_selection = { enable = true,
+    disable = disable_large_buffer,
     keymaps = {
       init_selection = "ti",
       node_incremental = "tn",
@@ -40,12 +45,12 @@ require'nvim-treesitter.configs'.setup {
   },
   highlight = {
     enable = true, 
-    disable = {},
+    disable = disable_large_buffer,
     additional_vim_regex_highlighting = false,
   },
   playground = {
     enable = true,
-    disable = {},
+    disable = disable_large_buffer,
     updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
     persist_queries = false, -- Whether the query persists across vim sessions
     keybindings = {

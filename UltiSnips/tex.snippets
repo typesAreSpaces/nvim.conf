@@ -587,51 +587,12 @@ snippet ;fig "Figure environment" iA
 endsnippet
 
 global !p
-from os import getcwd
-from os import system
-from os.path import exists
-
-def stringify_args(rex, num):
-	stringify = []
-	for x in rex.group(1).split(","):
-		stringify.append("\'" + x + "\'")
-	if(num == -1):
-		return stringify
-	return stringify[:num]
-
-def joinArgsFstArg(rex):
-	stringify = stringify_args(rex, -1)
-	# The [1:-1] removes the extra quotes
-	first_arg = stringify[0][1:-1]
-	return ' '.join(stringify), first_arg
-
-def stringToPath(s):
-	return s.replace(' ', '\\ ')
-
-def removeExtraQuotes(s):
-	return s[1:-1]
-
-# file_name: either '/kldb.tex' or '/idxdb.tex'
-# cmd_path: either '/home/jose/.local/scripts/add-knowledge -p ' or '/home/jose/.local/scripts/add-glossary -p '
-# prefix_entry: either ' -e \'index=' or ' -e \'newglossaryentry{'
-# prefix_output: either "\\intro{" or "\\glsadd{"
-def aux_add_cmd(file_name, cmd_path, prefix_entry, prefix_output):
-	curr_dir = getcwd()
-	curr_file = curr_dir + file_name
-	curr_file_path = stringToPath(curr_file)
-	if(not(exists(curr_file))):
-		file_cmd = 'touch ' + curr_file_path
-		system(file_cmd)
-	add_cmd=cmd_path + curr_file_path + ' '
-	args, first_arg = joinArgsFstArg(match)
-	command = "if ! grep " + curr_file + prefix_entry + first_arg + '}\'; then ' + add_cmd + args + '; fi'
-	system(command)
-	return prefix_output + first_arg + '}'
+from nvim_snippet_helpers import stringify_args, removeExtraQuotes, create_input, add_entry
 endglobal
 
 snippet ';intro(\w+[,\w+[\s\w]*]*)  ' "Intro Knowledge" riA
 `!p
-snip.rv = aux_add_cmd('/kldb.tex', '/home/jose/.local/scripts/add-knowledge -p ', ' -e \'index=', "\\intro{")
+snip.rv = add_entry("knowledge", match)
 ` $0
 endsnippet
 
@@ -641,7 +602,7 @@ endsnippet
 
 snippet ';gloss(\w+[,\w+[\s\w]*]*)  ' "Introduce new glossary term" riA
 `!p
-snip.rv = aux_add_cmd('/idxdb.tex', '/home/jose/.local/scripts/add-glossary -p ', ' -e \'newglossaryentry{', "\\glsadd{")
+snip.rv = add_entry("glossary", match)
 ` $0
 endsnippet
 
@@ -651,22 +612,7 @@ endsnippet
 
 snippet ';input(\w+[,\w+[\s\w]*]*)  ' "Input file" riA
 `!p
-args = stringify_args(match, 3)
-num_args = len(args)
-if (num_args == 3):
-	name, title_name, latex_header = args[0], args[1], args[2]
-elif (num_args == 2):
-	name, title_name, latex_header = args[0], args[1], "section"
-elif (num_args == 1):
-	name, title_name, latex_header = args[0], "", ""
-else:
-	name, title_name, latex_header = "_new_file_", "new_title", ""
-name = name[1:-1]
-file_name = name + ".tex"
-system("touch " + file_name)
-if(1 < num_args and num_args < 4):
-	system("echo \\\\" + latex_header + "{" + title_name + "} > " + file_name)
-snip.rv = "\\input{" + name + "}"
+snip.rv = create_input(match)
 `
 $0
 endsnippet 

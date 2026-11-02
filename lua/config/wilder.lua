@@ -21,6 +21,7 @@ wilder.set_option('pipeline', {
     --filters = {'fuzzy_filter', 'difflib_sorter'},
   --}),
   wilder.cmdline_pipeline({
+    debounce = 75, -- Coalesce rapid typing before starting Python work.
     -- sets the language to use, 'vim' and 'python' are supported
     language = 'python',
     -- 0 turns off fuzzy matching
@@ -29,6 +30,7 @@ wilder.set_option('pipeline', {
     fuzzy = 1,
   }),
   wilder.python_search_pipeline({
+    debounce = 75,
     -- can be set to wilder#python_fuzzy_delimiter_pattern() for stricter fuzzy matching
     pattern = wilder.python_fuzzy_pattern(),
     -- omit to get results in the order they appear in the buffer

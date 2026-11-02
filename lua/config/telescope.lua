@@ -13,7 +13,7 @@ require('telescope').setup{
       }
     },
     layout_strategy = 'flex',
-    scroll_stategy = 'cycle',
+    scroll_strategy = 'cycle',
   },
   pickers = {
     find_files = {
@@ -30,10 +30,16 @@ require('telescope').setup{
       theme = "dropdown",
       previewer = false,
     },
-    commads = {
+    commands = {
       theme = "dropdown",
     },
   },
   extensions = {
+    file_browser = require('config.telescope-file-browser-config'),
   }
 }
+
+require('telescope-tabs').setup({})
+for _, extension in ipairs({ 'file_browser', 'telescope-tabs', 'ultisnips' }) do
+  require('telescope').load_extension(extension)
+end

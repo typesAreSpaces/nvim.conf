@@ -1,15 +1,30 @@
-vim.api.nvim_create_user_command("TabRename", function(opts)
-  -- Tabby stores custom names itself and redraws the tabline when they change.
-  require('tabby.feature.tab_name').set(0, vim.trim(opts.args))
-end, {
-  nargs = '?',
-  desc = 'Rename the current tab, or reset its name when no argument is given',
-})
-
 vim.api.nvim_create_user_command("RuffCheck", function()
   vim.cmd("wall") -- Save files before checking
-  vim.opt_local.makeprg = "uv run ruff check --output-format concise --quiet ."
-  vim.opt_local.errorformat = "%f:%l:%c: %m"
-  vim.cmd("make!")
-  vim.cmd("copen")
+  local cwd = vim.fn.getcwd()
+  require('overseer').new_task({
+    name = 'Ruff check',
+    cmd = { 'uv', 'run', 'ruff', 'check', '--output-format', 'concise', '--quiet', '.' },
+    cwd = cwd,
+    components = {
+      { 'on_output_quickfix', errorformat = '%f:%l:%c: %m', open = true, open_height = 8 },
+      'default',
+    },
+  }):start()
 end, {})
+
+local reloadable = { 'customization', 'settings', 'mappings', 'commands' }
+vim.api.nvim_create_user_command('ReloadConfig', function(opts)
+  local modules = opts.args == '' and reloadable or { opts.args }
+  for _, name in ipairs(modules) do
+    if not vim.tbl_contains(reloadable, name) then
+      error('Choose one of: ' .. table.concat(reloadable, ', '))
+    end
+    package.loaded[name] = nil
+    require(name)
+  end
+  vim.notify('Reloaded ' .. table.concat(modules, ', ') .. '. Restart Neovim for plugin changes.')
+end, {
+  nargs = '?',
+  desc = 'Reload core settings, or one core module; plugin changes require restart',
+  complete = function() return reloadable end,
+})

@@ -1,4 +1,3 @@
-vim.cmd([[syntax on]])
 vim.o.clipboard = 'unnamedplus'
 vim.o.encoding = 'UTF-8'
 vim.o.timeoutlen = 1000
@@ -8,43 +7,43 @@ vim.o.smarttab = true
 vim.o.backup = false
 vim.o.termguicolors = true
 
-vim.o.tabstop = 2
-vim.bo.tabstop = 2
-vim.o.softtabstop = 2
-vim.bo.softtabstop = 2
-vim.o.shiftwidth = 2
-vim.bo.shiftwidth = 2
-vim.o.undofile = true
-vim.bo.undofile = true
-vim.o.swapfile = false
-vim.bo.swapfile = false
-vim.o.smartindent = true
-vim.bo.smartindent = true
-vim.o.expandtab = true
-vim.bo.expandtab = true
+local buffer_defaults = {
+  tabstop = 2,
+  softtabstop = 2,
+  shiftwidth = 2,
+  undofile = true,
+  swapfile = false,
+  smartindent = true,
+  expandtab = true,
+}
+local window_defaults = {
+  relativenumber = true,
+  number = true,
+  concealcursor = 'nc',
+  conceallevel = 0,
+}
 
-vim.o.relativenumber = true
-vim.wo.relativenumber = true
-vim.o.rnu = true
-vim.wo.rnu = true
-vim.o.number = true
-vim.wo.number = true
+-- Reloads update defaults for future buffers/windows, preserving existing ones.
+for name, value in pairs(buffer_defaults) do vim.opt_global[name] = value end
+for name, value in pairs(window_defaults) do vim.opt_global[name] = value end
 
 --opt('guifont', "InputMono\ NF:h30")
 
-base16colorspace = 256
-vim.g.gruvbox_contrast_dark = 'hard'
-vim.g.gruvbox_invert_selection = '0'
+vim.g.base16colorspace = 256
+vim.g.gruvbox_material_background = 'hard'
 vim.cmd([[color gruvbox-material]])
 --vim.cmd([[color doom-one]])
-
-vim.opt.conceallevel = 2
-vim.opt.concealcursor = 'nc'
 
 vim.opt.autochdir = false
 
 vim.g.vim_markdown_conceal = 0
 vim.g.vim_markdown_conceal_code_blocks = 0
-vim.opt.conceallevel = 0
-
 --vim.opt.textwidth = 80
+
+return {
+  -- Only initialization applies defaults to the initial buffer and window.
+  apply_local_defaults = function()
+    for name, value in pairs(buffer_defaults) do vim.bo[name] = value end
+    for name, value in pairs(window_defaults) do vim.wo[name] = value end
+  end,
+}

@@ -1,19 +1,18 @@
 vim.opt.completeopt = {'menuone', 'noinsert', 'noselect'}
 local cmp = require'cmp'
-
-local has_any_words_before = function()
-  if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then
-    return false
-  end
-  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-end
+local performance = require('config.performance')
+local default_enabled = cmp.get_config().enabled
 
 local press = function(key)
   vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), "n", true)
 end
 
 cmp.setup({
+  enabled = function()
+    if performance.is_large(0) then return false end
+    if type(default_enabled) == 'function' then return default_enabled() end
+    return default_enabled
+  end,
   snippet = {
     expand = function(args)
       vim.fn["UltiSnips#Anon"](args.body)
@@ -24,15 +23,14 @@ cmp.setup({
     documentation = cmp.config.window.bordered(),
   },
   mapping = {
-    ["<C-Space>"] = cmp.mapping(function(fallback)
+    ["<C-Space>"] = cmp.mapping(function()
       if cmp.visible() then
         if vim.fn["UltiSnips#CanExpandSnippet"]() == 1 then
           return press("<C-R>=UltiSnips#ExpandSnippet()<CR>")
         end
-      elseif has_any_words_before() then
-        press("<Space>")
+        cmp.select_next_item()
       else
-        fallback()
+        cmp.complete()
       end
     end, {"i","s"}), 
     ["<C-g>"] = cmp.mapping.abort(),
@@ -89,7 +87,9 @@ cmp.setup({
       name = 'buffer',
       keyword_length = 3,
       option = {
-        keyword_length = 3
+        get_bufnrs = function()
+          return performance.is_large(0) and {} or { vim.api.nvim_get_current_buf() }
+        end,
       }
     },
     { name = 'path' }

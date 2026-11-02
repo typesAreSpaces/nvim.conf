@@ -36,3 +36,12 @@ require('tabby.tabline').set(function(line)
     hl = theme.fill,
   }
 end)
+
+-- Install after Tabby initializes: its own TabRename command requires an
+-- argument, while this command also supports resetting the current tab name.
+vim.api.nvim_create_user_command('TabRename', function(opts)
+  require('tabby.feature.tab_name').set(0, vim.trim(opts.args))
+end, {
+  nargs = '?',
+  desc = 'Rename the current tab, or reset its name when no argument is given',
+})
